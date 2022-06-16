@@ -35,7 +35,7 @@ library(flextable)
 # Import 
 
 ## Import your data
-Importing the output files from each software can be easily with `prepare_mpwR`. Please put all output files in one folder and follow the guidelines for naming the files. No other files/subfolders are allowed. Details are provided in the vignette [Import](https://okdll.github.io/mpwR/articles/Import.html).
+Importing the output files from each software can be performed with `prepare_mpwR`. Please put all output files in one folder and follow the guidelines for naming the files. No other files/subfolders are allowed. Details are provided in the vignette [Import](https://okdll.github.io/mpwR/articles/Import.html).
 
 ```{r import, eval = FALSE}
 files <- prepare_mpwR(path = "Path_to_Folder_with_files")
@@ -130,7 +130,7 @@ plot_DC_stacked_barplot(input_list = DC_Reports_perc, level = "ProteinGroup.IDs"
 # Missed Cleavages
 
 ## Report
-A Report for Missed Cleavages can be generated with `get_MC_Report` for absolute numbers or in percentage. 
+A report for Missed Cleavages can be generated with `get_MC_Report` for absolute numbers or in percentage. 
 ```{r MC-Report}
 MC_Reports <- get_MC_Report(input_list = files, metric = "absolute")
 MC_Reports_perc <- get_MC_Report(input_list = files, metric = "percentage")
@@ -232,7 +232,7 @@ plot_Upset(input_list = Upset_prepared, label = "ProteinGroup.IDs")
 ```
 
 ## Inter-software Comparison - flowTraceR
-For inter-software comparisons functions of the package **flowTraceR** [LINK] are incorporated. Software outputs are standardized and easily comparable.
+Functions of the package [flowTraceR](https://cran.r-project.org/web/packages/flowTraceR/index.html) are incorporated in mpwR for inter-software comparisons. Software outputs are standardized and easily comparable.
 
 ### Precursor-level without flowTraceR
 Without standardizing the precursor-level information, the software outputs only form software-dependent cluster.
