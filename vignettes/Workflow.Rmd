@@ -258,7 +258,7 @@ Summary_Report <- get_summary_Report(input_list = files)
 ```
 
 ## Plot
-As a visual summary a radarchart for all analyses can be accessed via `plot_radarchart`.
+As a visual summary a radar chart for all analyses can be accessed via `plot_radarchart`.
 
 ### Overview
 ```{r plot-radarchart, eval = FALSE}

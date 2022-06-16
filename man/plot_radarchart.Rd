@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_radarchart.R
 \name{plot_radarchart}
 \alias{plot_radarchart}
-\title{Radarchart}
+\title{Radar chart}
 \usage{
 plot_radarchart(input_df)
 }
@@ -10,13 +10,13 @@ plot_radarchart(input_df)
 \item{input_df}{Data frame with summary information. Analysis column and at least one category column is required.}
 }
 \value{
-This function returns a radarchart as htmlwidget.
+This function returns a radar chart as htmlwidget.
 }
 \description{
-Plot radarchart of summary statistics.
+Plot radar chart of summary statistics.
 }
 \details{
-Summary results are displayed via radarchart. Each analysis has its own trace.
+Summary results are displayed via radar chart. Each analysis has its own trace.
 }
 \examples{
 # Load libraries

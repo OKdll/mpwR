@@ -1,8 +1,8 @@
-#' Radarchart
+#' Radar chart
 #'
-#' Plot radarchart of summary statistics.
+#' Plot radar chart of summary statistics.
 #'
-#' Summary results are displayed via radarchart. Each analysis has its own trace.
+#' Summary results are displayed via radar chart. Each analysis has its own trace.
 #'
 #' @param input_df Data frame with summary information. Analysis column and at least one category column is required.
 #'
@@ -10,7 +10,7 @@
 #'
 #' @import plotly
 #'
-#' @return This function returns a radarchart as htmlwidget.
+#' @return This function returns a radar chart as htmlwidget.
 #'
 #' @export
 #'
@@ -47,7 +47,7 @@
 #' )
 
 
-#Radarchart
+#Radar chart
 plot_radarchart <- function(input_df) {
 
   #dependency ==

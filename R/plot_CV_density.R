@@ -2,7 +2,7 @@
 #'
 #' Plot cumulative density for precision results
 #'
-#' Quantitative and retention time precision are plotted as cumulative density.
+#' Quantitative or retention time precision are plotted as cumulative density.
 #'
 #' @param input_list A list with data frames and respective information on quantitative or retention time precision.
 #' @param xaxes_limit Numeric. Limit of x-axes in plot.

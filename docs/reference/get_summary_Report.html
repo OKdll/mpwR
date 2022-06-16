@@ -74,7 +74,7 @@
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>This function returns a list for each analysis with respective data frame including information of missed cleavages.</p><ul><li><p>Analysis - analysis name.</p></li>
+    <p>This function returns a list. For each analysis a respective data frame is stored in the list with the following information:</p><ul><li><p>Analysis - analysis name.</p></li>
 <li><p>"Median ProteinGroup.IDs abs." - median number of proteingroup identifications.</p></li>
 <li><p>"Median Protein.IDs abs." - median number of protein identifications.</p></li>
 <li><p>"Median Peptide.IDs abs." - median number of peptide identifications.</p></li>
@@ -88,14 +88,14 @@
 <li><p>"Full profile - Protein.IDs %" - number of protein identifications for full profiles in percentage.</p></li>
 <li><p>"Full profile - ProteinGroup.IDs %" - number of proteinGroup identifications for full profiles in percentage.</p></li>
 <li><p>"Precursor.IDs abs. with a CV Retention time &lt; X %" - number of precursor identifications with a CV value for retention time precision under user-specified threshold X.</p></li>
-<li><p>"Proteingroup.IDs abs. with a CV LFQ &lt; 20 %" - number of proteingroup identifications with a CV value for quantitative precision under user-specified threshold X.</p></li>
-<li><p>"Peptide.IDs abs. with a CV LFQ &lt; 20 %" - number of peptide identifications with a CV value for quantitative precision under user-specified threshold X.</p></li>
+<li><p>"Proteingroup.IDs abs. with a CV LFQ &lt; X %" - number of proteingroup identifications with a CV value for quantitative precision under user-specified threshold X.</p></li>
+<li><p>"Peptide.IDs abs. with a CV LFQ &lt; X %" - number of peptide identifications with a CV value for quantitative precision under user-specified threshold X.</p></li>
 <li><p>"Peptide IDs with zero missed cleavages abs." - number of peptide identifications with zero missed cleavages.</p></li>
 <li><p>"Peptide IDs with zero missed cleavages %" - number of peptide identifications with zero missed cleavages in percentage.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>For each submitted data a summary report including information about achieved identifications (ID), data completeness (DC), missed cleavages (MC), and both quantitative (LFQ) and retention time (RT) precision.</p>
+    <p>For each submitted data a summary report including information about achieved identifications (ID), data completeness (DC), missed cleavages (MC), and both quantitative (LFQ) and retention time (RT) precision is generated.</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>

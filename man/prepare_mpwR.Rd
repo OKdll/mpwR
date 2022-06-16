@@ -7,7 +7,7 @@
 prepare_mpwR(path)
 }
 \arguments{
-\item{path}{Path to folder where the input data is stored - only input data. No subfolders or other files. Analysis name as prefix + for MaxQuant: _evidence, _peptides, _proteinGroups; for PD - R-friendly headers enabled: _PSMs, _Proteins, _PeptideGroups, _ProteinGroups; for DIA-NN and Spectronaut _Report}
+\item{path}{Path to folder where the input data is stored - only input data. No subfolders or other files. Analysis name as prefix + for MaxQuant: _evidence, _peptides, _proteinGroups; for PD - R-friendly headers enabled: _PSMs, _Proteins, _PeptideGroups, _ProteinGroups; for DIA-NN and Spectronaut: _Report}
 }
 \value{
 A list - each list entry has filename and software info as well as stored data.
@@ -16,7 +16,7 @@ A list - each list entry has filename and software info as well as stored data.
 Input data will be imported, renamed and default filtering will be applied
 }
 \details{
-Wrapping function for import_mpwR and prepare_input.
+Function for easily importing software imports and preparing for downstream analysis with mpwR. As default for MaxQuant "Reverse" and "Potential Contaminants" are filtered out. As default for PD only "High" confidence identifications are included. As default for Spectronaut only EG.Identified equals TRUE are included.
 }
 \examples{
 \dontrun{

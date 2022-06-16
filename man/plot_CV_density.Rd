@@ -24,7 +24,7 @@ This function returns a density plot.
 Plot cumulative density for precision results
 }
 \details{
-Quantitative and retention time precision are plotted as cumulative density.
+Quantitative or retention time precision are plotted as cumulative density.
 }
 \examples{
 # Load libraries

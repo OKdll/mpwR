@@ -2,7 +2,7 @@
 #'
 #' Generates a summary report
 #'
-#' For each submitted data a summary report including information about achieved identifications (ID), data completeness (DC), missed cleavages (MC), and both quantitative (LFQ) and retention time (RT) precision.
+#' For each submitted data a summary report including information about achieved identifications (ID), data completeness (DC), missed cleavages (MC), and both quantitative (LFQ) and retention time (RT) precision is generated.
 #'
 #' @param input_list A list with data frames including ID, DC, MC, LFQ and RT information.
 #' @param CV_RT_th_hold Numeric. User-specified threshold for CV value of retention time precision. Default is 5.
@@ -11,7 +11,7 @@
 #'
 #' @author Oliver Kardell
 #'
-#' @return This function returns a list for each analysis with respective data frame including information of missed cleavages.
+#' @return This function returns a list. For each analysis a respective data frame is stored in the list with the following information:
 #' \itemize{
 #'  \item Analysis - analysis name.
 #'  \item "Median ProteinGroup.IDs abs." - median number of proteingroup identifications.
@@ -27,8 +27,8 @@
 #'  \item "Full profile - Protein.IDs %" - number of protein identifications for full profiles in percentage.
 #'  \item "Full profile - ProteinGroup.IDs %" - number of proteinGroup identifications for full profiles in percentage.
 #'  \item "Precursor.IDs abs. with a CV Retention time < X %" - number of precursor identifications with a CV value for retention time precision under user-specified threshold X.
-#'  \item "Proteingroup.IDs abs. with a CV LFQ < 20 %" - number of proteingroup identifications with a CV value for quantitative precision under user-specified threshold X.
-#'  \item "Peptide.IDs abs. with a CV LFQ < 20 %" - number of peptide identifications with a CV value for quantitative precision under user-specified threshold X.
+#'  \item "Proteingroup.IDs abs. with a CV LFQ < X %" - number of proteingroup identifications with a CV value for quantitative precision under user-specified threshold X.
+#'  \item "Peptide.IDs abs. with a CV LFQ < X %" - number of peptide identifications with a CV value for quantitative precision under user-specified threshold X.
 #'  \item "Peptide IDs with zero missed cleavages abs." - number of peptide identifications with zero missed cleavages.
 #'  \item "Peptide IDs with zero missed cleavages %" - number of peptide identifications with zero missed cleavages in percentage.
 #' }

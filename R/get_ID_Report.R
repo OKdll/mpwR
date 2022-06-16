@@ -10,14 +10,14 @@
 #'
 #' @import stringr
 #'
-#' @return This function returns a list for each analysis with respective data frame including number of identifications per run.
+#' @return This function returns a list. For each analysis a respective data frame including number of identifications per run is stored in the generated list.
 #' \itemize{
 #'  \item Analysis - analysis name.
 #'  \item Run - run information.
 #'  \item Precursor.IDs - number of precursor identification.
 #'  \item Peptide.IDs - number of peptide identification.
 #'  \item Protein.IDs - number of protein identification.
-#'  \item ProteinGroup.IDs -number of proteingroup identification.
+#'  \item ProteinGroup.IDs - number of proteingroup identification.
 #' }
 #'
 #' @export

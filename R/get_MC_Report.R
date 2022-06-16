@@ -12,7 +12,7 @@
 #' @import stringr
 #' @importFrom magrittr %>%
 #'
-#' @return This function returns a list for each analysis with respective data frame including information of missed cleavages.
+#' @return This function returns a list. For each analysis a respective data frame including information of missed cleavages is stored in the generated list.
 #' \itemize{
 #'  \item Analysis - analysis name.
 #'  \item Missed.Cleavage - categorical entry with number of missed cleavages.

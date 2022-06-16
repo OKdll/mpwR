@@ -12,14 +12,14 @@ get_DC_Report(input_list, metric = c("absolute", "percentage"))
 \item{metric}{\code{"absolute"} for absolute numbers or \code{"percentage"} for displaying percentages. Default is absolute.}
 }
 \value{
-This function returns a list for each analysis with respective data frame including missing value information per level.
+This function returns a list. For each analysis a respective data frame including missing value information per level is stored in the generated list.
 \itemize{
 \item Analysis - analysis name.
 \item Nr.Missing.Values - number of missing values.
 \item Precursor.IDs - number of precursor identification per missing value entry - absolute or in percentage.
 \item Peptide.IDs - number of peptide identification per missing value entry - absolute or in percentage.
 \item Protein.IDs - number of protein identification per missing value entry - absolute or in percentage.
-\item ProteinGroup.IDs -number of proteingroup identification per missing value entry - absolute or in percentage.
+\item ProteinGroup.IDs - number of proteingroup identification per missing value entry - absolute or in percentage.
 \item Profile - categorical entries: "unique", "sparse", "shared with at least 50\%" or "complete".
 }
 }

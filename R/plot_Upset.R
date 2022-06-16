@@ -7,7 +7,7 @@
 #' @param input_list A list with data frames and respective level information.
 #' @param label Character string. Choose between "Precursor.IDs", "Peptide.IDs", "Protein.IDs" or "ProteinGroup.IDs" for corresponding level. Default is "Precursor.IDs".
 #' @param nr_intersections Numeric. Maximum number of intersections shown in plot. Default is 10.
-#' @param highlight_overlap Logical. If TRUE, overlapping intersections is highlighted in yellow. Default is FALSE. If TRUE, overlapping intersections needs to be in plot!
+#' @param highlight_overlap Logical. If TRUE, overlapping intersections is highlighted in yellow. Default is FALSE. If TRUE, overlapping intersections need to be in plot!
 #'
 #' @author Oliver Kardell
 #'

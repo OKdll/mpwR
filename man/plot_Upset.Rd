@@ -18,7 +18,7 @@ plot_Upset(
 
 \item{nr_intersections}{Numeric. Maximum number of intersections shown in plot. Default is 10.}
 
-\item{highlight_overlap}{Logical. If TRUE, overlapping intersections is highlighted in yellow. Default is FALSE. If TRUE, overlapping intersections needs to be in plot!}
+\item{highlight_overlap}{Logical. If TRUE, overlapping intersections is highlighted in yellow. Default is FALSE. If TRUE, overlapping intersections need to be in plot!}
 }
 \value{
 This function returns a Upset plot.
