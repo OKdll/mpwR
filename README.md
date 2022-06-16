@@ -4,6 +4,10 @@
 # mpwR <img src='man/figures/mpwR_hexagon.png' align="right" width="15%" />
 
 <!-- badges: start -->
+
+[![Travis build
+status](https://travis-ci.com/OKdll/mpwR.svg?branch=main)](https://travis-ci.com/OKdll/mpwR)
+[![R-CMD-check](https://github.com/OKdll/mpwR/workflows/R-CMD-check/badge.svg)](https://github.com/OKdll/mpwR/actions)
 <!-- badges: end -->
 
 mpwR offers a systematic approach for comparing proteomic workflows and
