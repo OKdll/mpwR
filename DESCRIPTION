@@ -24,13 +24,13 @@ Imports:
     stringr,
     tibble,
     tidyr,
-    UpSetR,
-    utils
+    UpSetR
 Suggests: 
     flextable,
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    utils
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
