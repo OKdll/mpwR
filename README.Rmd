@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# mpwR <img src='man/figures/mpwR.png' align="right" width="15%" />
+# mpwR <img src='man/figures/mpwR.png' align="right" width="16%" />
 
 <!-- badges: start -->
 <!-- badges: end -->

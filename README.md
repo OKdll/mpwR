@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# mpwR <img src='man/figures/mpwR.png' align="right" width="15%" />
+# mpwR <img src='man/figures/mpwR.png' align="right" width="16%" />
 
 <!-- badges: start -->
 <!-- badges: end -->
