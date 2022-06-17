@@ -5,8 +5,8 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.com/OKdll/mpwR.svg?branch=main)](https://travis-ci.com/OKdll/mpwR)
+[![Build
+Status](https://app.travis-ci.com/OKdll/mpwR.svg?branch=main)](https://app.travis-ci.com/OKdll/mpwR)
 [![R-CMD-check](https://github.com/OKdll/mpwR/workflows/R-CMD-check/badge.svg)](https://github.com/OKdll/mpwR/actions)
 <!-- badges: end -->
 
