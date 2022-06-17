@@ -6,8 +6,8 @@
 <!-- badges: start -->
 
 [![Build
-Status](https://app.travis-ci.com/OKdll/mpwR.svg?branch=main)](https://app.travis-ci.com/OKdll/mpwR)
-[![R-CMD-check](https://github.com/OKdll/mpwR/workflows/R-CMD-check/badge.svg)](https://github.com/OKdll/mpwR/actions)
+Status](https://app.travis-ci.com/OKdll/mpwR.svg?branch=main)](https://www.app.travis-ci.com/OKdll/mpwR)
+[![R-CMD-check](https://github.com/OKdll/mpwR/workflows/R-CMD-check/badge.svg)](https://www.github.com/OKdll/mpwR/actions)
 <!-- badges: end -->
 
 mpwR offers a systematic approach for comparing proteomic workflows and
