@@ -232,7 +232,7 @@ plot_Upset(input_list = Upset_prepared, label = "ProteinGroup.IDs")
 ```
 
 ## Inter-software Comparison - flowTraceR
-Functions of the package [flowTraceR](https://cran.r-project.org/web/packages/flowTraceR/index.html) are incorporated in mpwR for inter-software comparisons. Software outputs are standardized and easily comparable.
+Functions of the package [flowTraceR](https://CRAN.R-project.org/package=flowTraceR) are incorporated in mpwR for inter-software comparisons. Software outputs are standardized and easily comparable.
 
 ### Precursor-level without flowTraceR
 Without standardizing the precursor-level information, the software outputs only form software-dependent cluster.
