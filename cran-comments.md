@@ -23,4 +23,12 @@ windows-x86_64-w64-mingw32 (win-builder): Possibly misspelled words in DESCRIPTI
 
 Description was checked. Words are not misspelled.
 
+## Resubmission
+This is a resubmission. The following aspects were adjusted:
+
+* In DESCRIPTION: software names are single quoted
+
+* In Workflow.Rmd: Updated URL to canonical form - https://CRAN.R-project.org/package=flowTraceR
+
+* In README: Upadted travis CI URL - moved to https://www.travis-ci.com/OKdll/mpwR
 
