@@ -478,12 +478,12 @@ prepare_Upset <- function(input_df,
 
 
       } else if (level == "Protein.IDs") {
-        print("No flowTraceR conversion for Protein.IDs available - so no flowTraceR filtering applied.")
+        message("No flowTraceR conversion for Protein.IDs available - so no flowTraceR filtering applied.")
 
       } else if (level == "ProteinGroup.IDs") {
 
           input_df <- flowTraceR::convert_proteingroups(input_df = input_df, software = software)
-          print("For ProteinGroup.IDs - No flowTraceR filtering applied")
+          message("For ProteinGroup.IDs - No flowTraceR filtering applied")
       }
     } else if (remove_traceR_unknownMods == FALSE) {
 
