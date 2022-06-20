@@ -7,7 +7,7 @@ calculate_CV <- function(input_df,
   if (cv_col == "Retention.time") {
     level <- "Precursor.IDs"
   } else if (cv_col == "Peptide_LFQ") {
-    level <- "Peptide.IDs"
+    level <- "Stripped.Sequence"
   } else if (cv_col == "ProteinGroup_LFQ") {
     level <- "ProteinGroup.IDs"
   }
@@ -192,11 +192,6 @@ tidy_MQ_LFQ <- function(input_df,
 
   #handle global vars
   . <- NULL
-
-  if (cv_col == "Peptide_LFQ") {
-    input_df <- input_df %>%
-      dplyr::rename("Peptide.IDs_mpwR" = "Stripped.Sequence_mpwR")
-  }
 
   cols <- input_df %>%
     dplyr::select(starts_with("LFQ intensity ")) %>%

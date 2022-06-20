@@ -34,6 +34,7 @@
 #'         "Spectronaut" = tibble::tibble(
 #'            Run_mpwR = rep(c("A","B"), times = 5),
 #'            Precursor.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 2),
+#'            Stripped.Sequence_mpwR = rep(c("A", "B", "C", "D", "E"), each = 2),
 #'            Peptide.IDs_mpwR = rep(c("A", "B", "C", "D", "E"), each = 2),
 #'            ProteinGroup.IDs_mpwR = rep(c("A", "B", "C", "D", "E"), each = 2),
 #'            Retention.time_mpwR = sample(1:20, 10),
@@ -54,7 +55,7 @@ get_CV_LFQ_pep <- function(input_list) {
    cols_MQ_pep <- c("Stripped.Sequence_mpwR")
    cols_MQ_pepLFQ <- c("LFQ intensity")
 
-   cols_spec <- c("Run_mpwR", "Peptide_LFQ_mpwR", "Peptide.IDs_mpwR")
+   cols_spec <- c("Run_mpwR", "Peptide_LFQ_mpwR", "Stripped.Sequence_mpwR")
 
  #handle global vars
  . <- NULL

@@ -9,7 +9,7 @@ test_that("calculate_CV works", {
 
  data_pepLFQ <- tibble::tibble(
    "Run_mpwR" = c("R01", "R02", "R03", "R01", "R02"),
-   "Peptide.IDs_mpwR" = c("A1", "A1", "A1", "B2", "B2"),
+   "Stripped.Sequence_mpwR" = c("A1", "A1", "A1", "B2", "B2"),
    "Peptide_LFQ_mpwR" = c(3, 4, 5, 4, NA)
  )
 

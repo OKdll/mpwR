@@ -37,6 +37,7 @@ data <- list(
         "Spectronaut" = tibble::tibble(
            Run_mpwR = rep(c("A","B"), times = 5),
            Precursor.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 2),
+           Stripped.Sequence_mpwR = rep(c("A", "B", "C", "D", "E"), each = 2),
            Peptide.IDs_mpwR = rep(c("A", "B", "C", "D", "E"), each = 2),
            ProteinGroup.IDs_mpwR = rep(c("A", "B", "C", "D", "E"), each = 2),
            Retention.time_mpwR = sample(1:20, 10),
