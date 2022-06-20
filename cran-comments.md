@@ -26,6 +26,13 @@ Description was checked. Words are not misspelled.
 ## Resubmission
 This is a resubmission. The following aspects were adjusted:
 
-
 * In README: invalid URLs removed
 
+## Resubmission
+This is a resubmission. The following aspects were adjusted:
+
+* In Description: Change to undirected quotation marks.
+
+* In Description: References describing the methods in package: None available.
+
+* In Functions: print() changed to message()/warning().

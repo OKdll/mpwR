@@ -7,8 +7,8 @@ Authors@R:
 Description: Useful functions to analyze proteomic workflows including
     number of identifications, data completeness, missed cleavages,
     quantitative and retention time precision etc. Various software
-    outputs are supported such as `ProteomeDiscoverer`, `Spectronaut`, `DIA-NN`
-    and `MaxQuant`.
+    outputs are supported such as 'ProteomeDiscoverer', 'Spectronaut', 'DIA-NN'
+    and 'MaxQuant'.
 License: MIT + file LICENSE
 Imports: 
     comprehenr,
