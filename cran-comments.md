@@ -16,23 +16,6 @@ First submission.
 
 ## R CMD check results
 
-0 errors ✓ | 0 warnings ✓ | 1 note
+0 errors ✓ | 0 warnings ✓ | 0 note
 
-## Note
-windows-x86_64-w64-mingw32 (win-builder): Possibly misspelled words in DESCRIPTION.
 
-Description was checked. Words are not misspelled.
-
-## Resubmission
-This is a resubmission. The following aspects were adjusted:
-
-* In README: invalid URLs removed
-
-## Resubmission
-This is a resubmission. The following aspects were adjusted:
-
-* In Description: Change to undirected quotation marks.
-
-* In Description: References describing the methods in package: None available.
-
-* In Functions: print() changed to message()/warning().
