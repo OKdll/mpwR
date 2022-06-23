@@ -4,15 +4,26 @@
 # mpwR <img src='man/figures/mpwR_hexagon.png' align="right" width="15%" />
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/OKdll/mpwR/workflows/R-CMD-check/badge.svg)](https://github.com/OKdll/mpwR/actions)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/mpwR)](https://CRAN.R-project.org/package=mpwR)
 <!-- badges: end -->
 
-mpwR offers a systematic approach for comparing proteomic workflows and
-empowers the researcher to effortlessly access valuable information
-about identifications, data completeness, quantitative precision, and
-other performance indicators across an unlimited number of analyses and
-multiple software tools. It can be used to analyze label-free mass
-spectrometry-based experiments with data-dependent or data-independent
-spectral acquisition.
+mpwR \[ɪmˈpaʊə(r)\] offers a systematic approach for comparing proteomic
+workflows and empowers the researcher to effortlessly access valuable
+information about identifications, data completeness, quantitative
+precision, and other performance indicators across an unlimited number
+of analyses and multiple software tools. It can be used to analyze
+label-free mass spectrometry-based experiments with data-dependent or
+data-independent spectral acquisition.
+
+## Applications
+
+The functions of mpwR provide a great foundation to generate customized
+reports e.g. with RMarkdown or to build shiny apps/dashboards for
+downstream data analysis. An example for a shiny dashboard is available
+[here](https://okdll.shinyapps.io/mpwR/).
 
 ## Installation
 
@@ -23,7 +34,7 @@ following commands:
 
 ``` r
 # install.packages("devtools") #remove "#" if you do not have devtools package installed yet
-devtools::install_github("OKdll/mpwR", dependencies = TRUE) # use dependencies TRUE to install all required packages for flowTraceR
+devtools::install_github("OKdll/mpwR", dependencies = TRUE) # use dependencies TRUE to install all required packages for mpwR
 ```
 
 ## Preparation
