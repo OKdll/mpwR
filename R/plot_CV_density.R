@@ -65,7 +65,7 @@ plot_CV_density <- function(input_list,
   #handle global vars
    . <- NULL
   #reduce data to Analysis_mpwR and respective cv_col
-   mpwR_list <- comprehenr::to_list(for (i in input_list) select(i, .data$Analysis_mpwR, all_of(cv_col[1])))
+   mpwR_list <- comprehenr::to_list(for (i in input_list) select(i, "Analysis_mpwR", all_of(cv_col[1])))
 
   #combine and plot
    dplyr::bind_rows(mpwR_list) %>%
