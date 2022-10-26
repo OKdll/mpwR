@@ -91,7 +91,11 @@ viz_DC_stacked_barplot <- function(input_df,
     #color scheme
     unique_Profile <- length(unique(input_df$Profile))
 
-    if (unique_Profile < 4) {
+    if (unique_Profile < 3) {
+
+      color_palette_dc <- c("#CA0020", "#404040") #red to grey
+
+    } else if (unique_Profile == 3) {
 
       color_palette_dc <- c("#CA0020", "#F7E2A6", "#404040") #red to grey
 
@@ -105,13 +109,13 @@ viz_DC_stacked_barplot <- function(input_df,
       dplyr::summarize(Sum_Level = sum(.data[[!!level]])) %>%
       dplyr::ungroup()
 
-    xlimit <- max(xlimit[, 2]) + (max(xlimit[, 2]) * 0.1)
-
     #x axes name - appendix
     if (label == "absolute") {
       name_xaxes <- paste0(level, " [abs.]")
+      xlimit <- max(xlimit[, 2]) + (max(xlimit[, 2]) * 0.1)
     } else if (label == "percentage") {
       name_xaxes <- paste0(level, " [%]")
+      xlimit <- 101
     }
 
     #add text for labelling
@@ -263,7 +267,9 @@ viz_MC_stacked_barplot <- function(input_df,
   unique_profile <- length(unique(input_df$Missed.Cleavage))
 
   #color scheme
-  if (unique_profile < 4) {
+  if (unique_profile < 3) {
+    color_palette_mc <- c("#A6611A", "#018571")
+  } else if (unique_profile == 3) {
     color_palette_mc <- c("#A6611A", "#BAB8B8", "#018571")
   } else if (unique_profile == 4) {
     color_palette_mc <- c("#A6611A", "#BAB8B8", "#80CDC1", "#018571")
@@ -277,15 +283,15 @@ viz_MC_stacked_barplot <- function(input_df,
     dplyr::summarize(
       Sum_Level = sum(.data$mc_count)
     )
-  xlimit <- max(xlimit[, 2]) + (max(xlimit[, 2]) * 0.1)
 
   name_xaxes <- "Peptide IDs"
 
   if (label == "absolute") {
     name_xaxes <- paste0(name_xaxes, " [abs.]")
-
+    xlimit <- max(xlimit[, 2]) + (max(xlimit[, 2]) * 0.1)
   } else if (label == "percentage") {
     name_xaxes <- paste0(name_xaxes, " [%]")
+    xlimit <- 101
   }
 
 
