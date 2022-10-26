@@ -136,10 +136,10 @@ join_DC_levels <- function(input_df,
 generate_DC_Report_percentage <- function(input_df) {
   input_df %>%
     dplyr::mutate(
-      ProteinGroup.IDs = round((.data$ProteinGroup.IDs / sum(.data$ProteinGroup.IDs)) * 100, digits = 0),
-      Protein.IDs = round((.data$Protein.IDs / sum(.data$Protein.IDs)) * 100, digits = 0),
-      Peptide.IDs = round((.data$Peptide.IDs / sum(.data$Peptide.IDs)) * 100, digits = 0),
-      Precursor.IDs = round((.data$Precursor.IDs / sum(.data$Precursor.IDs)) * 100, digits = 0)) %>%
+      ProteinGroup.IDs = round((.data$ProteinGroup.IDs / sum(.data$ProteinGroup.IDs)) * 100, digits = 2),
+      Protein.IDs = round((.data$Protein.IDs / sum(.data$Protein.IDs)) * 100, digits = 2),
+      Peptide.IDs = round((.data$Peptide.IDs / sum(.data$Peptide.IDs)) * 100, digits = 2),
+      Precursor.IDs = round((.data$Precursor.IDs / sum(.data$Precursor.IDs)) * 100, digits = 2)) %>%
     tidyr::replace_na(list(
       Precursor.IDs = 0,
       Peptide.IDs = 0,
@@ -212,8 +212,11 @@ generate_MC_Report_percentage <- function(input_df) {
 
   input_df %>%
     dplyr::mutate(
-      mc_count = round((.data$mc_count / sum(.data$mc_count)) * 100, digits = 0)
-    )
+      mc_count = round((.data$mc_count / sum(.data$mc_count)) * 100, digits = 2)
+    ) %>%
+    tidyr::replace_na(list(
+      mc_count = 0
+    ))
 }
 
 #DC - wrap_DC_barplot - get only names for plot != NULL e.g. for Spectronaut - Protein.IDs

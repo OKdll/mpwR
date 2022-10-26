@@ -64,7 +64,7 @@ viz_DC_barplot <- function(input_df,
       ggplot2::theme(axis.line = ggplot2::element_line(color = "black", size = 0.5, linetype = "solid")) +
       ggplot2::scale_y_continuous(expand = c(0, 0), limits = c(0, ylimit)) +
       ggplot2::scale_x_continuous(breaks = seq(from = 0, to = nrow(input_df), by = 1)) +
-      ggplot2::geom_text(ggplot2::aes(y = input_df[, 2], label = input_df[, 2]), vjust = -0.5, color = "black", size = 3) +
+      ggplot2::geom_text(ggplot2::aes(y = input_df[, 2], label = round(input_df[, 2], digits = 0)), vjust = -0.5, color = "black", size = 3) +
       ggplot2::theme_bw()
 
   }
@@ -246,7 +246,7 @@ viz_MC_barplot <- function(input_df,
          x = name_xaxes) +
     ggplot2::theme(axis.line = ggplot2::element_line(color = "black", size = 0.5, linetype = "solid")) +
     ggplot2::scale_y_continuous(expand = c(0, 0), limits = c(0, ylimit)) +
-    ggplot2::geom_text(ggplot2::aes(y = input_df[, 2], label = input_df[, 2]), vjust = -0.5, color = "black", size = 3) +
+    ggplot2::geom_text(ggplot2::aes(y = input_df[, 2], label = round(input_df[, 2], digits = 0)), vjust = -0.5, color = "black", size = 3) +
     ggplot2::theme_bw()
 }
 
