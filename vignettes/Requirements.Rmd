@@ -79,6 +79,7 @@ The following files and respective columns are required:
     * Evidence IDs
     * Potential contaminant
     * Reverse
+    * Only identified by site
     
 ## DIA-NN
 

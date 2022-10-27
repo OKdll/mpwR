@@ -16,7 +16,7 @@ A list - each list entry has filename and software info as well as stored data.
 Input data will be imported, renamed and default filtering will be applied
 }
 \details{
-Function for easily importing software outputs and preparing for downstream analysis with mpwR. As default for MaxQuant "Reverse" and "Potential Contaminants" are filtered out. As default for PD only "High" confidence identifications are included. As default for Spectronaut only EG.Identified equals TRUE are included.
+Function for easily importing software outputs and preparing for downstream analysis with mpwR. As default for MaxQuant "Reverse", "Potential contaminants" and "Only identified by site" are filtered out. As default for PD only "High" confidence identifications are included. As default for Spectronaut only EG.Identified equals TRUE are included.
 }
 \examples{
 \dontrun{
