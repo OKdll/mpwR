@@ -7,6 +7,11 @@ import_mpwR <- function(input_file, ...) {
 
 }
 
+#change integer64
+is.integer64 <- function(x) {
+  inherits(x, "integer64")
+}
+
 # Prepare the input data
 # Input data will be renamed and default filtering will be applied
 # Default filtering- MaxQuant: no potential contaminants and no reverse sequences; DIA-NN: none; Spectronaut: EG.Identified only TRUE; PD: Only High Confidence identifications
@@ -60,6 +65,16 @@ prepare_input <- function(input_df,
       }
       #**
 
+      #replace_na - if column has no "+" - only NA entries, filtering does not work
+      input_df <- input_df %>%
+        tidyr::replace_na(
+          list(
+            `Potential contaminant` = "",
+            Reverse = ""
+          )
+        )
+      #
+
       output_df <- input_df %>%
         dplyr::filter(.data$`Potential contaminant` != "+", .data$Reverse != "+") %>%
         dplyr::mutate("Run_mpwR" = .data$`Raw file`,
@@ -70,7 +85,8 @@ prepare_input <- function(input_df,
                       "Retention.time_mpwR" = .data$`Retention time`,
                       "Precursor.Charge_mpwR" = .data$Charge) %>%
         dplyr::filter(.data$Peptide.IDs_mpwR != "") %>%
-        tidyr::unite(., col = "Precursor.IDs_mpwR", c("Peptide.IDs_mpwR", "Precursor.Charge_mpwR"), sep = "", remove = FALSE)
+        tidyr::unite(., col = "Precursor.IDs_mpwR", c("Peptide.IDs_mpwR", "Precursor.Charge_mpwR"), sep = "", remove = FALSE) %>%
+        dplyr::mutate_if(is.integer64, as.double)
 
 
     } else if (MaxQuant_addon == "peptide") {
@@ -81,6 +97,16 @@ prepare_input <- function(input_df,
         stop("Not all required columns present in submitted data.")
       }
       #**
+
+      #replace_na - if column has no "+" - only NA entries, filtering does not work
+      input_df <- input_df %>%
+        tidyr::replace_na(
+          list(
+            `Potential contaminant` = "",
+            Reverse = ""
+          )
+        )
+      #
 
       output_df <- input_df %>%
         dplyr::filter(.data$`Potential contaminant` != "+", .data$Reverse != "+") %>%
@@ -98,10 +124,21 @@ prepare_input <- function(input_df,
         stop("Not all required columns present in submitted data.")
       }
       #**
+      #replace_na - if column has no "+" - only NA entries, filtering does not work
+      input_df <- input_df %>%
+        tidyr::replace_na(
+          list(
+            `Potential contaminant` = "",
+            Reverse = "",
+            `Only identified by site` = ""
+          )
+        )
+      #
 
       output_df <- input_df %>%
         dplyr::filter(.data$`Potential contaminant` != "+", .data$Reverse != "+") %>%
-        dplyr::mutate("ProteinGroup.IDs_mpwR" = .data$`Protein IDs`)
+        dplyr::mutate("ProteinGroup.IDs_mpwR" = .data$`Protein IDs`) %>%
+        dplyr::mutate_if(is.integer64, as.double)
 
     }
 
@@ -148,7 +185,8 @@ prepare_input <- function(input_df,
                     "Missed.Cleavage_mpwR" = .data$PEP.NrOfMissedCleavages,
                     "Retention.time_mpwR" = .data$EG.ApexRT,
                     "ProteinGroup_LFQ_mpwR" = .data$PG.Quantity, #not not necessarily LFQ quantity - depends on analysis settings in spectronaut
-                    "Peptide_LFQ_mpwR" = .data$PEP.Quantity) #not necessarily LFQ quantity - depends on analysis settings in spectronaut
+                    "Peptide_LFQ_mpwR" = .data$PEP.Quantity) %>% #not necessarily LFQ quantity - depends on analysis settings in spectronaut
+      dplyr::mutate_if(is.integer64, as.double)
 
   } else if (software == "PD") {
 
@@ -177,8 +215,8 @@ prepare_input <- function(input_df,
                       "Missed.Cleavage_mpwR" = .data$`Number of Missed Cleavages`,
                       "Precursor.Charge_mpwR" = .data$Charge,
                       "Retention.time_mpwR" = .data$`RT in min`) %>%
-        tidyr::unite(., col = "Precursor.IDs_mpwR", c("Peptide.IDs_mpwR", "Precursor.Charge_mpwR"), sep = "", remove = FALSE)
-
+        tidyr::unite(., col = "Precursor.IDs_mpwR", c("Peptide.IDs_mpwR", "Precursor.Charge_mpwR"), sep = "", remove = FALSE) %>%
+        dplyr::mutate_if(is.integer64, as.double)
 
     } else if (PD_addon == "peptide") {
 
@@ -199,8 +237,8 @@ prepare_input <- function(input_df,
           "Missed.Cleavage_mpwR" = .data$`Number of Missed Cleavages`
         ) %>%
         tidyr::pivot_longer(cols = contains("Found in Sample"), names_to = "Run_mpwR", values_to = "Found.in.Sample_values_mpwR") %>% #tidy #Run needed for ID_Report - generate_level_count
-        dplyr::filter(.data$Found.in.Sample_values_mpwR == "High") #"Not Found" - "Peak Found" - "Medium" - "Low"
-
+        dplyr::filter(.data$Found.in.Sample_values_mpwR == "High") %>% #"Not Found" - "Peak Found" - "Medium" - "Low"
+        dplyr::mutate_if(is.integer64, as.double)
 
     } else if (PD_addon == "protein") {
 
@@ -218,7 +256,8 @@ prepare_input <- function(input_df,
         dplyr::mutate(
           "Protein.IDs_mpwR" = .data$Accession) %>%
         tidyr::pivot_longer(cols = contains("Found in Sample"), names_to = "Run_mpwR", values_to = "Found.in.Sample_values_mpwR") %>% #tidy #Run needed for ID_Report - generate_level_count
-        dplyr::filter(.data$Found.in.Sample_values_mpwR == "High") #"Not Found" - "Peak Found" - "Medium" - "Low"
+        dplyr::filter(.data$Found.in.Sample_values_mpwR == "High") %>% #"Not Found" - "Peak Found" - "Medium" - "Low"
+        dplyr::mutate_if(is.integer64, as.double)
 
     } else if (PD_addon == "proteingroup") {
 
@@ -235,8 +274,9 @@ prepare_input <- function(input_df,
         dplyr::rename(
           "ProteinGroup.IDs_mpwR" = .data$`Protein Groups Protein Group ID`) %>% #, #only number! - PD Manual page 306
         tidyr::pivot_longer(cols = contains("Found in Sample"), names_to = "Run_mpwR", values_to = "Found.in.Sample_values_mpwR") %>% #tidy #Run needed for ID_Report - generate_level_count
-        dplyr::filter(.data$Found.in.Sample_values_mpwR == "High") #"Not Found" - "Peak Found" - "Medium" - "Low"
-    }
+        dplyr::filter(.data$Found.in.Sample_values_mpwR == "High") %>% #"Not Found" - "Peak Found" - "Medium" - "Low"
+        dplyr::mutate_if(is.integer64, as.double)
+      }
   }
   return(output_df)
 }
