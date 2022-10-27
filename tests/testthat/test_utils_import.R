@@ -131,6 +131,24 @@ test_that("prepare_input works", {
  expect_equal(output$Precursor.IDs_mpwR, c("AMod2", "BMod2"))
  expect_error(prepare_input(input_df = data[, -1], software = "PD", PD_addon = "psm"), "Not all required columns present in submitted data.")
 
+ data <- tibble::tibble(
+   Confidence = c("High", "High", "Low"),
+   `Spectrum File` = c("R01", "R02", "R03"),
+   `Protein Accessions` = c("A", "B", "B"),
+   `Annotated Sequence` = c("AMod", "BMod", "BMod"),
+   Modifications = c("Mod", "Mod", "Mod"),
+   `Number of Missed Cleavages` = c(2, 1, 0),
+   Charge = c(2, 2, 2),
+   `RT in min` = c(3, 3, 3),
+   Contaminant = c(TRUE, TRUE, TRUE)
+ )
+
+ output <- prepare_input(input_df = data, software = "PD", PD_addon = "psm")
+
+ expect_s3_class(output, "tbl")
+ expect_equal(nrow(output), 0)
+ expect_equal(ncol(output), 17)
+
  #petpide
  data <- tibble::tibble(
    Confidence = c("High", "High", "Low"),
@@ -156,6 +174,25 @@ test_that("prepare_input works", {
  expect_error(prepare_input(input_df = data[, -2], software = "PD", PD_addon = "peptide"), "Not all required columns present in submitted data.")
  expect_error(prepare_input(input_df = data2, software = "PD", PD_addon = "peptide"), "Not all required columns present in submitted data.")
 
+ data <- tibble::tibble(
+   Confidence = c("High", "High", "Low"),
+   `Sequence` = c("A", "B", "B"),
+   `Number of Protein Groups` = c(1, 1, 1),
+   `Number of Proteins`= c(1, 1, 1),
+   `Number of PSMs`= c(1, 1, 1),
+   Modifications = c("AMod", "BMod", "BMod"),
+   `Number of Missed Cleavages` = c(0, 0, 1),
+   `Found in Sample R01` = c("High", "High", "Low"),
+   `Found in Sample R02` = c("High", "Low", "Low"),
+   Contaminant = c(TRUE, TRUE, TRUE)
+ )
+
+ output <- prepare_input(input_df = data, software = "PD", PD_addon = "peptide")
+
+ expect_s3_class(output, "tbl")
+ expect_equal(nrow(output), 0)
+ expect_equal(ncol(output), 13)
+
  #protein
  data <- tibble::tibble(
    `Proteins Unique Sequence ID` = c(1, 2, 2),
@@ -178,6 +215,22 @@ test_that("prepare_input works", {
  expect_error(prepare_input(input_df = data[, -2], software = "PD", PD_addon = "protein"), "Not all required columns present in submitted data.")
  expect_error(prepare_input(input_df = data2, software = "PD", PD_addon = "protein"), "Not all required columns present in submitted data.")
 
+ data <- tibble::tibble(
+   `Proteins Unique Sequence ID` = c(1, 2, 2),
+   Description = c("A", "B", "B"),
+   `Protein FDR Confidence Combined` = c("High", "High", "Low"),
+   Accession = c("A", "B", "B"),
+   `Found in Sample R01` = c("High", "High", "Low"),
+   `Found in Sample R02` = c("High", "Low", "Low"),
+   Contaminant = c(TRUE, TRUE, TRUE)
+ )
+
+ output <- prepare_input(input_df = data, software = "PD", PD_addon = "protein")
+
+ expect_s3_class(output, "tbl")
+ expect_equal(nrow(output), 0)
+ expect_equal(ncol(output), 8)
+
  #proteingroup
  data <- tibble::tibble(
    `Group Description` = c("A", "B", "B"),
@@ -199,6 +252,22 @@ test_that("prepare_input works", {
  expect_equal(output$ProteinGroup.IDs_mpwR, c(1, 1, 2))
  expect_error(prepare_input(input_df = data[, -2], software = "PD", PD_addon = "proteingroup"), "Not all required columns present in submitted data.")
  expect_error(prepare_input(input_df = data2, software = "PD", PD_addon = "proteingroup"), "Not all required columns present in submitted data.")
+
+ data <- tibble::tibble(
+   `Group Description` = c("A", "B", "B"),
+   `Number of Proteins` = c(2, 2, 3),
+   `Number of Unique Peptides` = c(3, 1, 4),
+   `Protein Groups Protein Group ID` = c(1, 2, 2),
+   `Found in Sample R01` = c("High", "High", "Low"),
+   `Found in Sample R02` = c("High", "Low", "Low"),
+   Contaminant = c(TRUE, TRUE, TRUE)
+ )
+
+ output <- prepare_input(input_df = data, software = "PD", PD_addon = "proteingroup")
+
+ expect_s3_class(output, "tbl")
+ expect_equal(nrow(output), 0)
+ expect_equal(ncol(output), 7)
 
 })
 

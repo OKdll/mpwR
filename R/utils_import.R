@@ -218,6 +218,12 @@ prepare_input <- function(input_df,
         tidyr::unite(., col = "Precursor.IDs_mpwR", c("Peptide.IDs_mpwR", "Precursor.Charge_mpwR"), sep = "", remove = FALSE) %>%
         dplyr::mutate_if(is.integer64, as.double)
 
+      #If contaminant column is present
+      if (sum(stringr::str_detect(colnames(input_df), pattern = "Contaminant")) > 0) {
+        output_df <- output_df %>%
+          filter(Contaminant == FALSE)
+      }
+
     } else if (PD_addon == "peptide") {
 
       #Column check
@@ -240,6 +246,12 @@ prepare_input <- function(input_df,
         dplyr::filter(.data$Found.in.Sample_values_mpwR == "High") %>% #"Not Found" - "Peak Found" - "Medium" - "Low"
         dplyr::mutate_if(is.integer64, as.double)
 
+      #If contaminant column is present
+      if (sum(stringr::str_detect(colnames(input_df), pattern = "Contaminant")) > 0) {
+        output_df <- output_df %>%
+          filter(Contaminant == FALSE)
+      }
+
     } else if (PD_addon == "protein") {
 
       #Column check
@@ -259,6 +271,12 @@ prepare_input <- function(input_df,
         dplyr::filter(.data$Found.in.Sample_values_mpwR == "High") %>% #"Not Found" - "Peak Found" - "Medium" - "Low"
         dplyr::mutate_if(is.integer64, as.double)
 
+      #If contaminant column is present
+      if (sum(stringr::str_detect(colnames(input_df), pattern = "Contaminant")) > 0) {
+        output_df <- output_df %>%
+          filter(Contaminant == FALSE)
+      }
+
     } else if (PD_addon == "proteingroup") {
 
       #Column check####
@@ -276,7 +294,14 @@ prepare_input <- function(input_df,
         tidyr::pivot_longer(cols = contains("Found in Sample"), names_to = "Run_mpwR", values_to = "Found.in.Sample_values_mpwR") %>% #tidy #Run needed for ID_Report - generate_level_count
         dplyr::filter(.data$Found.in.Sample_values_mpwR == "High") %>% #"Not Found" - "Peak Found" - "Medium" - "Low"
         dplyr::mutate_if(is.integer64, as.double)
-      }
+    }
+
+    #If contaminant column is present
+    if (sum(stringr::str_detect(colnames(input_df), pattern = "Contaminant")) > 0) {
+      output_df <- output_df %>%
+        filter(Contaminant == FALSE)
+    }
+
   }
   return(output_df)
 }
