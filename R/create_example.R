@@ -52,6 +52,7 @@ create_example <- function() {
           "Peptide counts (all)" = c(1, 2, 2, 3, 3),
           "Potential contaminant" = rep(c(""), times = 5),
           "Reverse" = rep(c(""), times = 5),
+          "Only identified by site" = rep(c(""), times = 5),
           "Intensity R01" = c(4, 4, 3.9, 5, 6),
           "Intensity R02" = c(3, 3.5, 4, 5, 6),
           "LFQ intensity R01" = c(4, 4, 5, 5, 6),

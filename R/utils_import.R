@@ -35,7 +35,7 @@ prepare_input <- function(input_df,
 
   cols_MQ_ev <- c("Raw file", "Proteins", "Modified sequence", "Sequence", "Missed cleavages", "Charge", "Retention time", "Potential contaminant", "Reverse")
   cols_MQ_pep <- c("Sequence", "Missed cleavages", "Last amino acid", "Amino acid after", "Potential contaminant", "Reverse") #"Last amino acid" and "amino acid after" to clearly identify data as peptide.txt - currently not used for downstream analysis #requires intensity columns for tidying #requires LFQ intensity for CV LFQ calc
-  cols_MQ_pg <- c("Protein IDs", "Majority protein IDs", "Peptide counts (all)", "Potential contaminant", "Reverse") #"Majority protein IDs" and "Peptide counts (all)" to clearly identify peptideGroups.txt - currently not used for downstream analysis #requires intensity columns for tidying #requires LFQ intensity for CV LFQ calc
+  cols_MQ_pg <- c("Protein IDs", "Majority protein IDs", "Peptide counts (all)", "Potential contaminant", "Reverse", "Only identified by site") #"Majority protein IDs" and "Peptide counts (all)" to clearly identify peptideGroups.txt - currently not used for downstream analysis #requires intensity columns for tidying #requires LFQ intensity for CV LFQ calc
 
   cols_DIANN <- c("Run", "Protein.Group", "Protein.Ids", "Modified.Sequence", "Stripped.Sequence", "Precursor.Id", "Precursor.Charge", "RT", "PG.MaxLFQ")
 

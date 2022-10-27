@@ -45,18 +45,20 @@ test_that("prepare_input works", {
 
   #proteingroup
   data <- tibble::tibble(
-     "Protein IDs" = c("A", "B", "B"),
-     "Majority protein IDs" = c("A", "B", "B"),
-     "Peptide counts (all)" = c(1, 2, 2),
-     "Potential contaminant" = c("", "+", ""),
-     "Reverse" = c("", "", "+")
+     "Protein IDs" = c("A", "B", "B", "A"),
+     "Majority protein IDs" = c("A", "B", "B", "A"),
+     "Peptide counts (all)" = c(1, 2, 2, 1),
+     "Potential contaminant" = c("", "+", "", ""),
+     "Reverse" = c("", "", "+", ""),
+     "Only identified by site" = c("", "", "", "+"),
+
   )
 
   output <- prepare_input(input_df = data, software = "MaxQuant", MaxQuant_addon = "proteingroup")
 
   expect_s3_class(output, "tbl")
   expect_equal(nrow(output), 1)
-  expect_equal(ncol(output), 6)
+  expect_equal(ncol(output), 7)
   expect_equal(output$ProteinGroup.IDs_mpwR, "A")
   expect_equal(output$`Protein IDs`, "A")
   expect_error(prepare_input(input_df = data[, -1], software = "MaxQuant", MaxQuant_addon = "proteingroup"), "Not all required columns present in submitted data.")
