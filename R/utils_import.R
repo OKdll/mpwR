@@ -42,7 +42,7 @@ prepare_input <- function(input_df,
   cols_spec <- c("R.FileName", "PG.ProteinGroups", "PEP.StrippedSequence", "EG.ModifiedPeptide", "EG.PrecursorId", "EG.Identified", "EG.ApexRT", "FG.Charge", "PG.Quantity", "PEP.Quantity", "PEP.NrOfMissedCleavages") # currently not used: PEP.IsProteotypic, EG.IsDecoy
 
   cols_PD_psm <- c("Confidence", "Spectrum File", "Protein Accessions", "Annotated Sequence", "Modifications", "Number of Missed Cleavages", "Charge", "RT in min") # currently not used Apex RT in min
-  cols_PD_pep <- c("Peptide Groups Peptide Group ID", "Confidence", "Sequence", "Modifications", "Number of Missed Cleavages") # also contains(Found in Sample) #currently not used Annotated Sequence #"Peptide Groups Peptide Group" ID to clearly identify peptideGroups.txt - not used for downstream analysis
+  cols_PD_pep <- c("Number of Protein Groups", "Number of Proteins", "Number of PSMs", "Confidence", "Sequence", "Modifications", "Number of Missed Cleavages") # also contains(Found in Sample) #currently not used Annotated Sequence #"Number of Protein Groups", "Number of Proteins", "Number of PSMs" to clearly identify peptideGroups.txt - not used for downstream analysis
   cols_PD_prot <- c("Proteins Unique Sequence ID", "Accession", "Description") # also contains(Found in Sample) #"Proteins Unique Sequence ID" and "Description" to cleary identify Proteins.txt - not used for downstream analysis
   cols_PD_pg <- c("Protein Groups Protein Group ID", "Group Description", "Number of Proteins", "Number of Unique Peptides") # also contains(Found in Sample) #"Protein Groups Protein Group ID","Number of Proteins", "Number of Unique Peptides" to clearly identify ProteinGroups.txt - not used for downstream analysis
   #***************

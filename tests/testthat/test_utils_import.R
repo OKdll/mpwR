@@ -133,9 +133,11 @@ test_that("prepare_input works", {
 
  #petpide
  data <- tibble::tibble(
-   `Peptide Groups Peptide Group ID` = c(1, 2, 2),
    Confidence = c("High", "High", "Low"),
    `Sequence` = c("A", "B", "B"),
+   `Number of Protein Groups` = c(1, 1, 1),
+   `Number of Proteins`= c(1, 1, 1),
+   `Number of PSMs`= c(1, 1, 1),
    Modifications = c("AMod", "BMod", "BMod"),
    `Number of Missed Cleavages` = c(0, 0, 1),
    `Found in Sample R01` = c("High", "High", "Low"),

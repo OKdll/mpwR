@@ -32,7 +32,7 @@ prepare_mpwR <- function(path) {
     `DIA-NN` = c("File.Name", "Run", "Protein.Group", "Protein.Ids"),
     Spectronaut = c("R.FileName", "PG.ProteinGroups", "EG.PrecursorId"),
     PD_psm = c("Confidence", "Spectrum File", "Annotated Sequence", "Modifications", "Number of Missed Cleavages", "Charge", "RT in min"),  #Apex RT in min
-    PD_pep = c("Peptide Groups Peptide Group ID", "Confidence", "Sequence", "Modifications", "Number of Missed Cleavages"), #Annotated Sequence
+    PD_pep = c("Number of Protein Groups", "Number of Proteins", "Number of PSMs", "Confidence", "Sequence", "Modifications", "Number of Missed Cleavages"), #Annotated Sequence
     PD_prot = c("Proteins Unique Sequence ID", "Accession", "Description"), #Modifications
     PD_pg =  c("Protein Groups Protein Group ID", "Group Description", "Number of Proteins", "Number of Unique Peptides")
   )

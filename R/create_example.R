@@ -111,8 +111,10 @@ create_example <- function() {
           `RT in min` = sample_replicates(c(44, 34, 43, 38, 37, 42, 45))
         ),
         "pep" = tibble::tibble(
-          `Peptide Groups Peptide Group ID` = c(1, 2, 3, 4, 5),
-          Confidence = rep("High", times = 5),
+           Confidence = rep("High", times = 5),
+          `Number of Protein Groups` = c(1, 1, 1, 1, 1),
+          `Number of Proteins`= c(1, 1, 1, 1, 1),
+          `Number of PSMs`= c(1, 1, 1, 1, 1),
           `Sequence` = sample(c("AADDTWEPFASGK", "DGWQWFWSPSTFR", "AACLLPK", "GLEWVGR", "DFTFDLYR", "DYELLCLDGTRKPVEEYANCHLAR", "LVRPEVDVMCTAFHDNEETFLK"), 5),
           Modifications = sample(c("", "", "C3(Dummy_Modification)", "", "", "C6(Carbamidomethyl); C20(Carbamidomethyl)", "M9(Oxidation); C10(Carbamidomethyl)"), 5),
           `Number of Missed Cleavages` = sample(c(0, 0, 2, 1, 2, 1, 3), 5),

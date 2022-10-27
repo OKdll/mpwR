@@ -112,7 +112,9 @@ Please enable R-friendly headers for exporting the files. The following files an
     * RT in min
 
 * PeptideGroups.txt
-    * Peptide Groups Peptide Group ID
+    * Number of Protein Groups
+    * Number of Proteins 
+    * Number of PSMs
     * Confidence
     * Sequence
     * Modifications
