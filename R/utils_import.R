@@ -136,7 +136,7 @@ prepare_input <- function(input_df,
       #
 
       output_df <- input_df %>%
-        dplyr::filter(.data$`Potential contaminant` != "+", .data$Reverse != "+") %>%
+        dplyr::filter(.data$`Potential contaminant` != "+", .data$Reverse != "+", data$`Only identified by site` != "+") %>%
         dplyr::mutate("ProteinGroup.IDs_mpwR" = .data$`Protein IDs`) %>%
         dplyr::mutate_if(is.integer64, as.double)
 
