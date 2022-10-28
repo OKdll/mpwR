@@ -46,7 +46,7 @@ viz_DC_barplot <- function(input_df,
   } else {
 
     input_df <- input_df %>%
-      dplyr::select(.data$Nr.Missing.Values, level)
+      dplyr::select("Nr.Missing.Values", any_of(level))
 
     if (label == "absolute") {
       name_yaxes <- "Nr. of affected profiles [abs.]\n"
@@ -164,7 +164,7 @@ viz_ID_barplot <- function(input_df,
   } else {
 
     input_df <- input_df %>%
-      dplyr::select(.data$Run, all_of(level))
+      dplyr::select("Run", all_of(level))
 
     name_xaxes <- paste(level, " [abs.]\n")
     xlimit <- max(input_df[, 2]) + (max(input_df[, 2]) * 0.1)
@@ -197,13 +197,13 @@ viz_ID_boxplot <- function(input_df,
   } else {
 
     input_df <- input_df %>%
-      dplyr::select(.data$Analysis, all_of(level))
+      dplyr::select("Analysis", all_of(level))
 
     name_yaxes <- paste(level, " [abs.]\n")
     xlimit <- max(input_df[, 2]) + (max(input_df[, 2]) * 0.1)
 
     analysis_levels <- input_df %>%
-      dplyr::select(.data$Analysis) %>%
+      dplyr::select("Analysis") %>%
       dplyr::arrange(.data$Analysis) %>%
       dplyr::distinct() %>%
       unlist(., use.names = FALSE)
@@ -230,7 +230,7 @@ viz_MC_barplot <- function(input_df,
   input_df$mc_count <- as.numeric(input_df$mc_count)
 
   input_df <- input_df %>%
-    dplyr::select(.data$Missed.Cleavage, .data$mc_count)
+    dplyr::select("Missed.Cleavage", "mc_count")
 
   if (label == "absolute") {
     name_yaxes <- "Nr. of Peptide.IDs [abs.]\n"
@@ -315,7 +315,7 @@ viz_MC_stacked_barplot <- function(input_df,
   input_df$Analysis <-  forcats::fct_rev(input_df$Analysis)
 
   input_df <- input_df %>%
-    dplyr::rename("Peptide_count" = .data$mc_count)
+    dplyr::rename("Peptide_count" = "mc_count")
 
   #plot
   input_df %>%

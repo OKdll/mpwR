@@ -153,7 +153,7 @@ get_Upset_list <- function(input_list,
     }
   }
 
-  output_list <- output_list[which(stringr::str_detect(string = names(output_list), pattern = ""))] #NULL entries for Spectronaut - Protein.IDs - in names: ""
+  output_list <- output_list[names(output_list) != ""] #NULL entries for Spectronaut - Protein.IDs - in names: ""
 
   return(output_list)
 

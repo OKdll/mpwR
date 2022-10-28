@@ -214,7 +214,7 @@ generate_MC_Report <- function(input_df,
     MC_Report <- input_df %>%
       dplyr::distinct(.data$Stripped.Sequence_mpwR, .keep_all = TRUE) %>%
       dplyr::count(.data$Missed.Cleavage_mpwR) %>%
-      dplyr::rename(Missed.Cleavage = .data$Missed.Cleavage_mpwR, mc_count = n) %>%
+      dplyr::rename(Missed.Cleavage = "Missed.Cleavage_mpwR", mc_count = n) %>%
       add_analysis_col(input_df = ., analysis_name = analysis_name)
 
     if (metric == "percentage") {
