@@ -233,7 +233,7 @@ prepare_input <- function(input_df,
 
       output_df <- input_df %>%
         dplyr::rename(
-          "ProteinGroup.IDs_mpwR" = .data$`Protein Groups Protein Group ID`) %>% #, #only number! - PD Manual page 306
+          "ProteinGroup.IDs_mpwR" = "Protein Groups Protein Group ID") %>% #, #only number! - PD Manual page 306
         tidyr::pivot_longer(cols = contains("Found in Sample"), names_to = "Run_mpwR", values_to = "Found.in.Sample_values_mpwR") %>% #tidy #Run needed for ID_Report - generate_level_count
         dplyr::filter(.data$Found.in.Sample_values_mpwR == "High") #"Not Found" - "Peak Found" - "Medium" - "Low"
     }
