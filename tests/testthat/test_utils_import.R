@@ -192,6 +192,7 @@ test_that("prepare_input works", {
  expect_s3_class(output, "tbl")
  expect_equal(nrow(output), 0)
  expect_equal(ncol(output), 13)
+ expect_equal(output$Stripped.Sequence_mpwR, character(0))
 
  #protein
  data <- tibble::tibble(
