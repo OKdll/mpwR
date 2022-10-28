@@ -168,7 +168,7 @@ test_that("prepare_input works", {
 
  expect_s3_class(output, "tbl")
  expect_equal(nrow(output), 3)
- expect_equal(ncol(output), 10)
+ expect_equal(ncol(output), 12)
  expect_equal(output$Run_mpwR, c("Found in Sample R01", "Found in Sample R02", "Found in Sample R01"))
  expect_equal(output$Stripped.Sequence_mpwR, c("A", "A", "B"))
  expect_error(prepare_input(input_df = data[, -2], software = "PD", PD_addon = "peptide"), "Not all required columns present in submitted data.")

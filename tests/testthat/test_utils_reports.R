@@ -21,8 +21,8 @@ test_that("generate_DC_Report works", {
    expect_s3_class(output_MQ, "data.frame")
    expect_equal(nrow(output_MQ), 3)
    expect_equal(ncol(output_MQ), 7)
-   expect_equal(output_MQ$ProteinGroup.IDs , c(0, 33, 67))
-   expect_equal(output_MQ$Precursor.IDs , c(0, 33, 67))
+   expect_equal(output_MQ$ProteinGroup.IDs , c(0.00, 33.33, 66.67))
+   expect_equal(output_MQ$Precursor.IDs , c(0.00, 33.33, 66.67))
    expect_equal(output_MQ$Analysis , c("test", "test", "test"))
 
    PD_psm <- tibble::tibble(
@@ -46,8 +46,8 @@ test_that("generate_DC_Report works", {
    expect_s3_class(output_PD, "data.frame")
    expect_equal(nrow(output_PD), 3)
    expect_equal(ncol(output_PD), 7)
-   expect_equal(output_PD$ProteinGroup.IDs , c(0, 33, 67))
-   expect_equal(output_PD$Precursor.IDs , c(0, 33, 67))
+   expect_equal(output_PD$ProteinGroup.IDs , c(0.00, 33.33, 66.67))
+   expect_equal(output_PD$Precursor.IDs , c(0.00, 33.33, 66.67))
    expect_equal(output_PD$Analysis , c("test", "test", "test"))
 
    #DIA-NN #Spectronaut
@@ -64,8 +64,8 @@ test_that("generate_DC_Report works", {
    expect_s3_class(output, "data.frame")
    expect_equal(nrow(output), 3)
    expect_equal(ncol(output), 7)
-   expect_equal(output$ProteinGroup.IDs , c(0, 33, 67))
-   expect_equal(output$Precursor.IDs , c(0, 33, 67))
+   expect_equal(output$ProteinGroup.IDs , c(0.00, 33.33, 66.67))
+   expect_equal(output$Precursor.IDs , c(0.00, 33.33, 66.67))
    expect_equal(output$Analysis , c("test", "test", "test"))
 
    output <- generate_DC_Report(input_df = input, analysis_name = "test", software = "Spectronaut", metric = "percentage")
@@ -73,8 +73,8 @@ test_that("generate_DC_Report works", {
    expect_s3_class(output, "data.frame")
    expect_equal(nrow(output), 3)
    expect_equal(ncol(output), 7)
-   expect_equal(output$ProteinGroup.IDs , c(0, 33, 67))
-   expect_equal(output$Precursor.IDs , c(0, 33, 67))
+   expect_equal(output$ProteinGroup.IDs , c(0.00, 33.33, 66.67))
+   expect_equal(output$Precursor.IDs , c(0.00, 33.33, 66.67))
    expect_equal(output$Analysis , c("test", "test", "test"))
 
 })
@@ -305,7 +305,7 @@ test_that("generate_summary_Report works",{
    expect_equal(output$`Full profile - Precursor.IDs [%]`, 50)
    expect_equal(output$`Precursor.IDs [abs.] with a CV Retention time < 5 [%]`, 0)
    expect_equal(output$`Proteingroup.IDs [abs.] with a CV LFQ < 20 [%]`, 3)
-   expect_equal(output$`Peptide IDs with zero missed cleavages [%]`, 33)
+   expect_equal(output$`Peptide IDs with zero missed cleavages [%]`, 33.33)
 
    #PD
    PD_psm <- tibble::tibble(
@@ -342,7 +342,7 @@ test_that("generate_summary_Report works",{
    expect_equal(output$`Full profile - Precursor.IDs [%]`, 50)
    expect_equal(output$`Precursor.IDs [abs.] with a CV Retention time < 5 [%]`, 0)
    expect_equal(output$`Proteingroup.IDs [abs.] with a CV LFQ < 20 [%]`, NA)
-   expect_equal(output$`Peptide IDs with zero missed cleavages [%]`, 33)
+   expect_equal(output$`Peptide IDs with zero missed cleavages [%]`, 33.33)
 
 })
 
