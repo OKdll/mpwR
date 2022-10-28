@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">mpwR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -149,6 +149,7 @@
 <li>Evidence IDs</li>
 <li>Potential contaminant</li>
 <li>Reverse</li>
+<li>Only identified by site</li>
 </ul>
 </li>
 </ul>
@@ -189,12 +190,14 @@
 </li>
 <li>PeptideGroups.txt
 <ul>
-<li>Peptide Groups Peptide Group ID</li>
+<li>Number of Protein Groups</li>
+<li>Number of Proteins</li>
+<li>Number of PSMs</li>
 <li>Confidence</li>
 <li>Sequence</li>
 <li>Modifications</li>
 <li>Number of Missed Cleavages</li>
-<li>Found in Sample column(s)</li>
+<li>Found in Sample column(s) (Required: Data Distributions node in the consensus workflow; set Show Found in Samples parameter to True)</li>
 </ul>
 </li>
 <li>Proteins.txt
@@ -203,7 +206,7 @@
 <li>Protein FDR Confidence Combined</li>
 <li>Accession</li>
 <li>Description</li>
-<li>Found in Sample column(s)</li>
+<li>Found in Sample column(s) (Required: Data Distributions node in the consensus workflow; set Show Found in Samples parameter to True)</li>
 </ul>
 </li>
 <li>ProteinGroups.txt
@@ -212,7 +215,7 @@
 <li>Group Description</li>
 <li>Number of Proteins</li>
 <li>Number of Unique Peptides</li>
-<li>Found in Sample column(s)</li>
+<li>Found in Sample column(s) (Required: Data Distributions node in the consensus workflow; set Show Found in Samples parameter to True)</li>
 </ul>
 </li>
 </ul>
