@@ -212,6 +212,7 @@ viz_ID_boxplot <- function(input_df,
       dplyr::mutate(Analysis = factor(.data$Analysis, levels = analysis_levels)) %>%
       ggplot2::ggplot(ggplot2::aes(x = forcats::fct_rev(.data$Analysis), y = input_df[, 2])) +
       ggplot2::geom_boxplot(fill = "grey", show.legend = FALSE, width = 0.6, lwd = 1.05) +
+      ggplot2::geom_jitter() +
       ggplot2::labs(y = name_yaxes,
            x = "Analysis \n") +
       ggplot2::coord_flip() +
