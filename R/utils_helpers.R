@@ -129,7 +129,7 @@ join_DC_levels <- function(input_df,
       Protein.IDs = 0,
       ProteinGroup.IDs = 0
     )) %>%
-    select(-Nr_Appearances)
+    select(-.data$Nr_Appearances)
 }
 
 #Generate DC Report with percentage entries
@@ -302,13 +302,13 @@ get_CV_IDs <- function(input_df,
   if (cv_col == "CV_Peptide_LFQ_mpwR" & sum(stringr::str_detect(string = colnames(input_df), pattern = "CV_Peptide_LFQ_mpwR")) < 1) {
 
     df <- tibble::tibble(count_CV = NA) %>%
-      dplyr::rename(!!paste0(level, ".IDs [abs.] with a CV ", value, " < ", th_hold, " [%]") := count_CV)
+      dplyr::rename(!!paste0(level, ".IDs [abs.] with a CV ", value, " < ", th_hold, " [%]") := .data$count_CV)
 
     return(df)
   } else if (cv_col == "CV_ProteinGroup_LFQ_mpwR" & sum(stringr::str_detect(string = colnames(input_df), pattern = "CV_ProteinGroup_LFQ_mpwR")) < 1) {
 
     df <- tibble::tibble(count_CV = NA) %>%
-      dplyr::rename(!!paste0(level, ".IDs [abs.] with a CV ", value, " < ", th_hold, " [%]") := count_CV)
+      dplyr::rename(!!paste0(level, ".IDs [abs.] with a CV ", value, " < ", th_hold, " [%]") := .data$count_CV)
 
     return(df)
   } else {
@@ -320,7 +320,7 @@ get_CV_IDs <- function(input_df,
       dplyr::summarize(
         count_CV = n()
       ) %>%
-      dplyr::rename(!!paste0(level, ".IDs [abs.] with a CV ", value, " < ", th_hold, " [%]") := count_CV)
+      dplyr::rename(!!paste0(level, ".IDs [abs.] with a CV ", value, " < ", th_hold, " [%]") := .data$count_CV)
   }
 }
 

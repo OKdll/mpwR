@@ -238,7 +238,7 @@ prepare_input <- function(input_df,
       #If contaminant column is present
       if (sum(stringr::str_detect(colnames(input_df), pattern = "Contaminant")) > 0) {
         output_df <- output_df %>%
-          filter(Contaminant == FALSE)
+          filter(.data$Contaminant == FALSE)
       }
 
     } else if (PD_addon == "peptide") {
@@ -266,7 +266,7 @@ prepare_input <- function(input_df,
       #If contaminant column is present
       if (sum(stringr::str_detect(colnames(input_df), pattern = "Contaminant")) > 0) {
         output_df <- output_df %>%
-          filter(Contaminant == FALSE)
+          filter(.data$Contaminant == FALSE)
       }
 
     } else if (PD_addon == "protein") {
@@ -291,7 +291,7 @@ prepare_input <- function(input_df,
       #If contaminant column is present
       if (sum(stringr::str_detect(colnames(input_df), pattern = "Contaminant")) > 0) {
         output_df <- output_df %>%
-          filter(Contaminant == FALSE)
+          filter(.data$Contaminant == FALSE)
       }
 
     } else if (PD_addon == "proteingroup") {
@@ -316,7 +316,7 @@ prepare_input <- function(input_df,
     #If contaminant column is present
     if (sum(stringr::str_detect(colnames(input_df), pattern = "Contaminant")) > 0) {
       output_df <- output_df %>%
-        filter(Contaminant == FALSE)
+        filter(.data$Contaminant == FALSE)
     }
 
   }
