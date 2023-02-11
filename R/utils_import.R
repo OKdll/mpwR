@@ -65,6 +65,11 @@ prepare_input <- function(input_df,
       }
       #**
 
+      #switch from logical to character, if empty column.
+      input_df$`Potential contaminant` <- as.character(input_df$`Potential contaminant`)
+      input_df$Reverse <- as.character(input_df$Reverse)
+      #
+
       #replace_na - if column has no "+" - only NA entries, filtering does not work
       input_df <- input_df %>%
         tidyr::replace_na(
@@ -98,6 +103,11 @@ prepare_input <- function(input_df,
       }
       #**
 
+      #switch from logical to character, if empty column.
+      input_df$`Potential contaminant` <- as.character(input_df$`Potential contaminant`)
+      input_df$Reverse <- as.character(input_df$Reverse)
+      #
+
       #replace_na - if column has no "+" - only NA entries, filtering does not work
       input_df <- input_df %>%
         tidyr::replace_na(
@@ -124,6 +134,13 @@ prepare_input <- function(input_df,
         stop("Not all required columns present in submitted data.")
       }
       #**
+
+      #switch from logical to character, if empty column.
+      input_df$`Potential contaminant` <- as.character(input_df$`Potential contaminant`)
+      input_df$Reverse <- as.character(input_df$Reverse)
+      input_df$`Only identified by site` <- as.character(input_df$`Only identified by site`)
+      #
+
       #replace_na - if column has no "+" - only NA entries, filtering does not work
       input_df <- input_df %>%
         tidyr::replace_na(
