@@ -270,5 +270,26 @@ test_that("prepare_input works", {
  expect_equal(nrow(output), 0)
  expect_equal(ncol(output), 7)
 
-})
 
+#Generic
+data <- tibble::tibble(
+   "Run_mpwR" = c("R01", "R01", "R02", "R03", "R01"),
+   "Precursor.IDs_mpwR" = c("A1", "A1", "A1", "A1", "B2"),
+   "Precursor.Charge_mpwR" = c(1, 1, 1, 1, 2),
+   "Retention.time_mpwR" = c(3, 3.5, 4, 5, 4),
+   "ProteinGroup_LFQ_mpwR" = c(3, 4, 5, 4, 4),
+   "Peptide_LFQ_mpwR" = c(3, 4, 5, 4, NA),
+   "Peptide.IDs_mpwR" = c("A", "A", "A", "A", "B"),
+   "ProteinGroup.IDs_mpwR" = c("A", "A", "A", "A", "B"),
+   "Protein.IDs_mpwR" = c("A", "A", "A", "A", "B"),
+   "Stripped.Sequence_mpwR" = c("ABCR", "AKCR", "ABKCK", "ARKAR", "ABCDR"),
+   "Missed.Cleavage_mpwR" = c(0, 1, 1, 2, 0),
+ )
+
+output <- prepare_input(input_df = data, software = "Generic")
+
+expect_s3_class(output, "tbl")
+expect_equal(nrow(output), 5)
+expect_equal(ncol(output), 11)
+
+})

@@ -92,6 +92,24 @@ test_that("get_summary_Report works",{
                "ProteinGroup.IDs_mpwR" = c("A", "A", "A", "B", "B", "B", "C", "C") #only number in original data frame
             )
          )
+      ),
+      Generic = list(
+        filename = "Generic",
+        software = "Generic",
+        data = list(
+          "Generic" = tibble::tibble(
+            "Run_mpwR" = c("R01", "R01", "R02", "R03", "R01"),
+            "Precursor.IDs_mpwR" = c("A1", "A1", "A1", "A1", "B2"), #same precursor multiple times per run possible - first RT entry used
+            "Retention.time_mpwR" = c(3, 3.5, 4, 5, 4),
+            "ProteinGroup_LFQ_mpwR" = c(3, 4, 5, 4, 4),
+            "Peptide_LFQ_mpwR" = c(3, 4, 5, 4, NA),
+            "Peptide.IDs_mpwR" = c("A", "A", "A", "A", "B"),
+            "ProteinGroup.IDs_mpwR" = c("A", "A", "A", "A", "B"),
+            "Protein.IDs_mpwR" = c("A", "A", "A", "A", "B"),
+            "Stripped.Sequence_mpwR" = c("ABCR", "AKCR", "ABKCK", "ARKAR", "ABCDR"),
+            "Missed.Cleavage_mpwR" = c(0, 1, 1, 2, 0),
+          )
+        )
       )
    )
 
@@ -100,7 +118,7 @@ test_that("get_summary_Report works",{
  expect_s3_class(output, "data.frame")
  expect_equal(nrow(output), length(data))
  expect_equal(ncol(output), 18)
- expect_equal(output$`Peptide.IDs [abs.] with a CV LFQ < 20 [%]`, c(3, NA, 0, NA))
+ expect_equal(output$`Peptide.IDs [abs.] with a CV LFQ < 20 [%]`, c(3, NA, 0, NA, 0))
 
 })
 

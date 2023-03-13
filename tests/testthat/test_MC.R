@@ -43,18 +43,28 @@ test_that("get_MC_Report works", {
                     Missed.Cleavage_mpwR = c(0, 1, 1, 2, 2)
                  )
         )
+        ),
+        Generic = list(
+          filename = "Generic",
+          software = "Generic",
+          data = list(
+            "Generic" = tibble::tibble(
+              Stripped.Sequence_mpwR = c("A", "B", "C", "D", "E"),
+              Missed.Cleavage_mpwR = c(0, 1, 1, 2, 2)
+            )
+          )
         )
     )
 
     output <- get_MC_Report(input_list = data, metric = "absolute")
     expect_type(output, "list")
-    expect_equal(length(output), 4)
-    expect_equal(names(output), c("A", "B", "C", "D"))
+    expect_equal(length(output), 5)
+    expect_equal(names(output), c("A", "B", "C", "D", "Generic"))
 
     output <- get_MC_Report(input_list = data, metric = "percentage")
     expect_type(output, "list")
-    expect_equal(length(output), 4)
-    expect_equal(names(output), c("A", "B", "C", "D"))
+    expect_equal(length(output), 5)
+    expect_equal(names(output), c("A", "B", "C", "D", "Generic"))
 
     #test error messages
     expect_error(get_MC_Report(input_list = data, metric = "absolte"), "Please check your metric entry - only use absolute or percentage")

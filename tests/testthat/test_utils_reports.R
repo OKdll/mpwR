@@ -50,7 +50,7 @@ test_that("generate_DC_Report works", {
    expect_equal(output_PD$Precursor.IDs , c(0.00, 33.33, 66.67))
    expect_equal(output_PD$Analysis , c("test", "test", "test"))
 
-   #DIA-NN #Spectronaut
+   #DIA-NN #Spectronaut #Generic
    input <- tibble::tibble(
       "Run_mpwR" = c("R01", "R02", "R03", "R01", "R02", "R03", "R02", "R03"),
       "Precursor.IDs_mpwR" = c("A1", "A1", "A1", "B2", "B2", "B2", "C2", "C2"),
@@ -77,6 +77,14 @@ test_that("generate_DC_Report works", {
    expect_equal(output$Precursor.IDs , c(0.00, 33.33, 66.67))
    expect_equal(output$Analysis , c("test", "test", "test"))
 
+   output <- generate_DC_Report(input_df = input, analysis_name = "test", software = "Generic", metric = "percentage")
+
+   expect_s3_class(output, "data.frame")
+   expect_equal(nrow(output), 3)
+   expect_equal(ncol(output), 7)
+   expect_equal(output$ProteinGroup.IDs , c(0.00, 33.33, 66.67))
+   expect_equal(output$Precursor.IDs , c(0.00, 33.33, 66.67))
+   expect_equal(output$Analysis , c("test", "test", "test"))
 })
 
 #generate ID Report
@@ -130,7 +138,7 @@ test_that("generate_ID_Report works", {
    expect_equal(output_PD$Precursor.IDs , c(2, 3, 3))
    expect_equal(output_PD$Analysis , c("test", "test", "test"))
 
-   #DIA-NN #Spectronaut
+   #DIA-NN #Spectronaut #Generic
    input <- tibble::tibble(
       "Run_mpwR" = c("R01", "R02", "R03", "R01", "R02", "R03", "R02", "R03"),
       "Precursor.IDs_mpwR" = c("A1", "A1", "A1", "B2", "B2", "B2", "C2", "C2"),
@@ -157,12 +165,21 @@ test_that("generate_ID_Report works", {
    expect_equal(output$Precursor.IDs , c(2, 3, 3))
    expect_equal(output$Analysis , c("test", "test", "test"))
 
+   output <- generate_ID_Report(input_df = input, analysis_name = "test", software = "Generic")
+
+   expect_s3_class(output, "data.frame")
+   expect_equal(nrow(output), 3)
+   expect_equal(ncol(output), 6)
+   expect_equal(output$ProteinGroup.IDs , c(2, 3, 3))
+   expect_equal(output$Precursor.IDs , c(2, 3, 3))
+   expect_equal(output$Analysis , c("test", "test", "test"))
+
 })
 
 #generate MC Report
 test_that("generate_MC_Report works", {
 
-   #MaxQuant #PD #Spectronaut
+   #MaxQuant #PD #Spectronaut #Generic
    data <- tibble::tibble(
       "Stripped.Sequence_mpwR" = c("ABCR", "AKCR", "ABKCK", "ARKAR"),
       "Missed.Cleavage_mpwR" = c(0, 1, 1, 2),
@@ -190,6 +207,14 @@ test_that("generate_MC_Report works", {
    expect_equal(nrow(output), 3)
    expect_equal(ncol(output), 3)
    expect_equal(output$mc_count, c(1, 2, 1))
+   expect_equal(output$Analysis, c("test", "test", "test"))
+
+   output <- generate_MC_Report(input_df = data, analysis_name = "test", software = "Generic", metric = "percentage")
+
+   expect_s3_class(output, "data.frame")
+   expect_equal(nrow(output), 3)
+   expect_equal(ncol(output), 3)
+   expect_equal(output$mc_count, c(25, 50, 25))
    expect_equal(output$Analysis, c("test", "test", "test"))
 
    #DIA-NN
@@ -343,6 +368,36 @@ test_that("generate_summary_Report works",{
    expect_equal(output$`Precursor.IDs [abs.] with a CV Retention time < 5 [%]`, 0)
    expect_equal(output$`Proteingroup.IDs [abs.] with a CV LFQ < 20 [%]`, NA)
    expect_equal(output$`Peptide IDs with zero missed cleavages [%]`, 33.33)
+
+   #Generic
+   generic <- tibble::tibble(
+     "Run_mpwR" = c("R01", "R01", "R02", "R03", "R01"),
+     "Precursor.IDs_mpwR" = c("A1", "A1", "A1", "A1", "B2"), #same precursor multiple times per run possible - first RT entry used
+     "Retention.time_mpwR" = c(3, 3.5, 4, 5, 4),
+     "ProteinGroup_LFQ_mpwR" = c(3, 4, 5, 4, 4),
+     "Peptide_LFQ_mpwR" = c(3, 4, 5, 4, NA),
+     "Peptide.IDs_mpwR" = c("A", "A", "A", "A", "B"),
+     "Protein.IDs_mpwR" = c("A", "A", "A", "A", "B"),
+     "ProteinGroup.IDs_mpwR" = c("A", "A", "A", "A", "B"),
+     "Stripped.Sequence_mpwR" = c("ABCR", "AKCR", "ABKCK", "ARKAR", "ABCDR"),
+     "Missed.Cleavage_mpwR" = c(0, 1, 1, 2, 0)
+   )
+
+   output <- generate_summary_Report(input_df = generic, analysis_name = "test", software = "Generic")
+
+   expect_s3_class(output, "data.frame")
+   expect_equal(nrow(output), 1)
+   expect_equal(ncol(output), 18)
+   expect_equal(output$Analysis, "test")
+   expect_equal(output$`Median Peptide.IDs [abs.]`, 1)
+   expect_equal(output$`Full profile - Precursor.IDs [abs.]`, 1)
+   expect_equal(output$`Full profile - Precursor.IDs [%]`, 50)
+   expect_equal(output$`Precursor.IDs [abs.] with a CV Retention time < 5 [%]`, 0)
+   expect_equal(output$`Proteingroup.IDs [abs.] with a CV LFQ < 20 [%]`, 0)
+   expect_equal(is.na(output$`Median Protein.IDs [abs.]`), FALSE)
+   expect_equal(is.na(output$`Full profile - Protein.IDs [abs.]`), FALSE)
+   expect_equal(is.na(output$`Full profile - Protein.IDs [%]`), FALSE)
+   expect_equal(output$`Peptide IDs with zero missed cleavages [%]`, 40)
 
 })
 

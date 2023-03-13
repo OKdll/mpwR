@@ -71,13 +71,26 @@ test_that("get_ID_Report works", {
                     ProteinGroup.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 4)
                 )
         )
+        ),
+        Generic = list(
+          filename = "Generic",
+          software = "Generic",
+          data = list(
+            "Generic" = tibble::tibble(
+              Run_mpwR = rep(c("A","B"), times = 15),
+              Precursor.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 6),
+              Protein.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 6),
+              Peptide.IDs_mpwR = rep(c("A", "A", "B", "B", "C"), each = 6),
+              ProteinGroup.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 6)
+            )
+          )
         )
     )
 
     output <- get_ID_Report(input_list = data)
     expect_type(output, "list")
-    expect_equal(length(output), 4)
-    expect_equal(names(output), c("A", "B", "C", "D"))
+    expect_equal(length(output), 5)
+    expect_equal(names(output), c("A", "B", "C", "D", "Generic"))
     expect_equal(output[["A"]]$Protein.IDs, c(5, 5))
 
     data <- list(

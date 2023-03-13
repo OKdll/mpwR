@@ -70,13 +70,28 @@ test_that("get_CV_LFQ_pep works", {
                     Precursor.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 2)
             )
         )
+        ),
+        Generic = list(
+          filename = "Generic",
+          software = "Generic",
+          data = list(
+            "Generic" = tibble::tibble(
+              Run_mpwR = rep(c("A","B"), times = 5),
+              Precursor.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 2),
+              Peptide.IDs_mpwR = rep(c("A", "B", "C", "D", "E"), each = 2),
+              Stripped.Sequence_mpwR = rep(c("A", "B", "C", "D", "E"), each = 2),
+              ProteinGroup.IDs_mpwR = rep(c("A", "B", "C", "D", "E"), each = 2),
+              Retention.time_mpwR = sample(1:20, 10),
+              Peptide_LFQ_mpwR = sample(1:30, 10),
+              ProteinGroup_LFQ_mpwR = sample(1:30, 10))
+          )
         )
     )
 
     output <- get_CV_LFQ_pep(input_list = data)
     expect_type(output, "list")
-    expect_equal(length(output), 2) #DIA-NN/PD removed
-    expect_equal(names(output), c("A", "C"))
+    expect_equal(length(output), 3) #DIA-NN/PD removed
+    expect_equal(names(output), c("A", "C", "Generic"))
 
     data <- list(
         MQ = list(
@@ -221,13 +236,25 @@ test_that("get_CV_LFQ_pg works", {
                     Precursor.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 2)
                 )
             )
+        ),
+        Generic = list(
+          filename = "Generic",
+          software = "Generic",
+          data = list(
+            "Generic" = tibble::tibble(
+              Run_mpwR = rep(c("A","B"), times = 5),
+              Precursor.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 2),
+              ProteinGroup.IDs_mpwR = rep(c("A", "B", "C", "D", "E"), each = 2),
+              Retention.time_mpwR = sample(1:20, 10),
+              ProteinGroup_LFQ_mpwR = sample(1:30, 10))
+          )
         )
     )
 
     output <- get_CV_LFQ_pg(input_list = data)
     expect_type(output, "list")
-    expect_equal(length(output), 3) #PD removed
-    expect_equal(names(output), c("A", "B", "C"))
+    expect_equal(length(output), 4) #PD removed
+    expect_equal(names(output), c("A", "B", "C","Generic"))
 
     data <- list(
         MQ = list(
@@ -372,13 +399,28 @@ test_that("get_CV_RT works", {
                     Precursor.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 2)
                 )
             )
+        ),
+        Generic = list(
+          filename = "Generic",
+          software = "Generic",
+          data = list(
+            "Generic" = tibble::tibble(
+              Run_mpwR = rep(c("A","B"), times = 5),
+              Precursor.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 2),
+              Peptide.IDs_mpwR = rep(c("A", "B", "C", "D", "E"), each = 2),
+              Stripped.Sequence_mpwR = rep(c("A", "B", "C", "D", "E"), each = 2),
+              ProteinGroup.IDs_mpwR = rep(c("A", "B", "C", "D", "E"), each = 2),
+              Retention.time_mpwR = sample(1:20, 10),
+              Peptide_LFQ_mpwR = sample(1:30, 10),
+              ProteinGroup_LFQ_mpwR = sample(1:30, 10))
+          )
         )
     )
 
     output <- get_CV_RT(input_list = data)
     expect_type(output, "list")
-    expect_equal(length(output), 4)
-    expect_equal(names(output), c("A", "B", "C", "D"))
+    expect_equal(length(output), 5)
+    expect_equal(names(output), c("A", "B", "C", "D", "Generic"))
 
     data <- list(
         MQ = list(

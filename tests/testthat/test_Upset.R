@@ -66,35 +66,48 @@ test_that("get_Upset_list works", {
                Protein.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 4)
             )
          )
+      ),
+      Generic = list(
+        filename = "Generic",
+        software = "Generic",
+        data = list(
+          "Generic" = tibble::tibble(
+            Run_mpwR = rep(c("A","B"), times = 10),
+            Precursor.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 4),
+            Protein.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 4),
+            Peptide.IDs_mpwR = rep(c("A", "A", "B", "B", "C"), each = 4),
+            ProteinGroup.IDs_mpwR = rep(c("A2", "A3", "B2", "B3", "C1"), each = 4)
+          )
+        )
       )
    )
 
    output <- get_Upset_list(input_list = data, level = "Precursor.IDs")
 
    expect_type(output, "list")
-   expect_equal(length(output), 4)
-   expect_equal(names(output), c("A", "B", "C", "D"))
+   expect_equal(length(output), 5)
+   expect_equal(names(output), c("A", "B", "C", "D", "Generic"))
    expect_equal(output$A, c("A2", "A3", "B2", "B3", "C1"))
 
    output <- get_Upset_list(input_list = data, level = "Peptide.IDs")
 
    expect_type(output, "list")
-   expect_equal(length(output), 4)
-   expect_equal(names(output), c("A", "B", "C", "D"))
+   expect_equal(length(output), 5)
+   expect_equal(names(output), c("A", "B", "C", "D", "Generic"))
    expect_equal(output$A, c("A", "B", "C"))
 
    output <- get_Upset_list(input_list = data, level = "Protein.IDs")
 
    expect_type(output, "list")
-   expect_equal(length(output), 3) #Spectronaut removed
-   expect_equal(names(output), c("A", "B", "D")) #Spectronaut removed
+   expect_equal(length(output), 4) #Spectronaut removed
+   expect_equal(names(output), c("A", "B", "D", "Generic")) #Spectronaut removed
    expect_equal(output$A, c("A2", "A3", "B2", "B3", "C1"))
 
    output <- get_Upset_list(input_list = data, level = "ProteinGroup.IDs")
 
    expect_type(output, "list")
-   expect_equal(length(output), 4)
-   expect_equal(names(output), c("A", "B", "C", "D"))
+   expect_equal(length(output), 5)
+   expect_equal(names(output), c("A", "B", "C", "D", "Generic"))
    expect_equal(output$A, c("A", "B", "C", "D", "E"))
 
    data <- list(
