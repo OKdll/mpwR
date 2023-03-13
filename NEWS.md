@@ -1,3 +1,11 @@
+# mpwR 0.1.3
+
+* Added vignette "Output Explanations"
+* Added vignette "Use case - Round robin study"
+* Added vignette "Use case - Software comparison"
+* Added generic input option
+* Added function to write template for generic input
+
 # mpwR 0.1.2
 
 ## Minor changes
@@ -21,3 +29,4 @@
 * First release version.
 
 
+ 

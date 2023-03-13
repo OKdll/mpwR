@@ -1,7 +1,7 @@
 Package: mpwR
 Title: Standardized Comparison of Workflows in Mass Spectrometry-Based
     Bottom-Up Proteomics
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: 
     person("Oliver", "Kardell", , "Okdll@gmx.net", role = c("aut", "cre"))
 Description: Useful functions to analyze proteomic workflows including

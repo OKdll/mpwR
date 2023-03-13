@@ -1,0 +1,182 @@
+---
+title: "Use case - Software Comparison"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{usecase_Software}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Data Analysis Report for software comparison.
+Plasma samples were prepared and analyzed in triplicate MS runs on an Q Exactive HF instrument both in DDA and DIA mode. This vignette is a showcase example for comparing proteomic software. The DDA data was analyzed in MaxQuant (MQ) and ProteomeDiscoverer (PD). The DIA data was analyzed in Spectronaut and in DIA-NN.
+ 
+<p>&nbsp;</p>
+
+# Identifications
+The number of identification are determined on precursor, peptide, protein and proteingroup level for each individual LC-MS set-up.
+<p>&nbsp;</p>
+## ProteinGroup IDs 
+```{r IDs Boxplot ProteinGroups , echo = FALSE}
+knitr::include_graphics("images/uc2_ID_pg.PNG")
+```
+<p>&nbsp;</p>
+## Protein IDs 
+```{r IDs Boxplot Proteins, echo = FALSE}
+knitr::include_graphics("images/uc2_ID_prot.PNG")
+```
+<p>&nbsp;</p>
+## Peptide IDs 
+```{r IDs Boxplot Peptides, echo = FALSE}
+knitr::include_graphics("images/uc2_ID_pep.PNG")
+```
+<p>&nbsp;</p>
+## Precursor IDs 
+```{r IDs Boxplot Precursor , echo = FALSE}
+knitr::include_graphics("images/uc2_ID_prec.PNG")
+```
+<p>&nbsp;</p>
+
+# Data Completeness
+The data completeness is investigated on precursor, peptide, protein and proteingroup level for the respective LC-MS set-ups.
+For a relative perspective each obtained absolute number of identifications for a specific number of missing values is divided by the total number of identifications.
+<p>&nbsp;</p>
+
+## Absolute view
+<p>&nbsp;</p>
+### ProteinGroup IDs 
+```{r DC ProteinGroups, echo = FALSE}
+knitr::include_graphics("images/uc2_DC_pg_abs.PNG")
+```
+<p>&nbsp;</p>
+### Protein IDs 
+```{r DC Proteins, echo = FALSE}
+knitr::include_graphics("images/uc2_DC_prot_abs.PNG")
+```
+<p>&nbsp;</p>
+### Peptide IDs 
+```{r DC Peptides, echo = FALSE}
+knitr::include_graphics("images/uc2_DC_pep_abs.PNG")
+```
+<p>&nbsp;</p>
+### Precursor IDs 
+```{r DC Precursor, echo = FALSE}
+knitr::include_graphics("images/uc2_DC_prec_abs.PNG")
+```
+<p>&nbsp;</p>
+
+## Relative view
+<p>&nbsp;</p>
+### ProteinGroup IDs 
+```{r DC relative ProteinGroups , echo = FALSE}
+knitr::include_graphics("images/uc2_DC_pg_perc.PNG")
+```
+<p>&nbsp;</p>
+### Protein IDs 
+```{r DC relative Proteins, echo = FALSE}
+knitr::include_graphics("images/uc2_DC_prot_perc.PNG")
+```
+<p>&nbsp;</p>
+### Peptide IDs 
+```{r DC relative Peptides, echo = FALSE}
+knitr::include_graphics("images/uc2_DC_pep_perc.PNG")
+```
+<p>&nbsp;</p>
+### Precursor IDs 
+```{r DC relative Precursor, echo = FALSE}
+knitr::include_graphics("images/uc2_DC_prec_perc.PNG")
+```
+<p>&nbsp;</p>
+
+# Missed Cleavages
+Missed cleavages are highlighted for the respective LC-MS set-ups.
+For a relative perspective each obtained absolute number of identifications for a specific number of missed cleavages is divided by the total number of identifications.
+<p>&nbsp;</p>
+## Absolute view 
+```{r MC Abs , echo = FALSE}
+knitr::include_graphics("images/uc2_MC_abs.PNG")
+```
+<p>&nbsp;</p>
+## Relative view 
+```{r MC perc, echo = FALSE}
+knitr::include_graphics("images/uc2_MC_perc.PNG")
+```
+<p>&nbsp;</p>
+
+# Retention time precision
+The coefficient of variation (CV) of the retention time on precursor level is compared for each LC-MS set-up. Only identifications are included, which are present in every technical replicate per set-up.
+<p>&nbsp;</p>
+```{r CV RT, echo = FALSE}
+knitr::include_graphics("images/uc2_CV_RT.PNG")
+```
+<p>&nbsp;</p>
+
+# Quantitative precision
+The coefficient of variation (CV) of the LFQ intensities is compared for each LC-MS set-up on peptide and proteingroup level, respectively. Only identifications are included, which are present in every technical replicate per set-up.
+<p>&nbsp;</p>
+
+## ProteinGroups
+```{r CV PG, echo = FALSE}
+knitr::include_graphics("images/uc2_CV_PG.PNG")
+```
+<p>&nbsp;</p>
+## Peptides
+```{r CV Pep, echo = FALSE}
+knitr::include_graphics("images/uc2_CV_Pep.PNG")
+```
+<p>&nbsp;</p>
+
+# Relationships Between Sets
+The relationships between the data sets in terms of their overlapping identifications and other intersections are visualized via UpSet plots on precursor, peptide, protein and proteingroup level, respectively. For each set-up only identifications with full profiles are submitted.
+<p>&nbsp;</p>
+## UpSet Plots 
+The UpSet plots show the sizes of the LC-MS datasets and resulting intersections between set-ups. Note that each UpSet plot is ordered by frequency and only shows the first 5 intersections.
+<p>&nbsp;</p>
+### ProteinGroup IDs 
+```{r Upset ProteinGroups , echo = FALSE}
+knitr::include_graphics("images/uc2_Upset_PG.PNG")
+```
+<p>&nbsp;</p>
+### Protein IDs 
+```{r Upset Proteins, echo = FALSE}
+knitr::include_graphics("images/uc2_Upset_prot.PNG")
+```
+<p>&nbsp;</p>
+### Peptide IDs 
+```{r Upset Peptides, echo = FALSE}
+knitr::include_graphics("images/uc2_Upset_pep.PNG")
+```
+<p>&nbsp;</p>
+### Precursor IDs 
+```{r Upset Precursor, echo = FALSE}
+knitr::include_graphics("images/uc2_Upset_prec.PNG")
+```
+<p>&nbsp;</p>
+
+# Summary 
+All metrics are summarized via radar charts. As showcase examples radar charts for number of IDs, data completeness and precision metrics are shown. Note, that the radar charts are usually interactive. Due to size requirements for generating this pkgdown vignette, only pictures of the radar charts are included.
+
+## Identifications
+```{r radar IDs, echo = FALSE}
+knitr::include_graphics("images/uc2_summary_ID.PNG")
+```
+<p>&nbsp;</p>
+## Data Completeness
+```{r radar DC, echo = FALSE}
+knitr::include_graphics("images/uc2_summary_DC.PNG")
+```
+<p>&nbsp;</p>
+## Precision characteristics
+```{r radar CV, echo = FALSE}
+knitr::include_graphics("images/uc2_summary_CV.PNG")
+```
+<p>&nbsp;</p>
+
+
