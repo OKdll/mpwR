@@ -88,6 +88,10 @@ get_summary_Report <- function(input_list,
       output_list[[i]] <- generate_summary_Report(input_df = input_list[[i]][["data"]][["psm"]], input_PD_peptide = input_list[[i]][["data"]][["pep"]], input_PD_protein = input_list[[i]][["data"]][["prot"]], input_PD_proteingroup = input_list[[i]][["data"]][["pg"]], analysis_name = input_list[[i]][["filename"]], software = "PD", CV_RT_th_hold = CV_RT_th_hold, CV_LFQ_Pep_th_hold = CV_LFQ_Pep_th_hold,  CV_LFQ_PG_th_hold =  CV_LFQ_PG_th_hold)
       names(output_list)[i] <- input_list[[i]][["filename"]]
       next
+    } else if (input_list[[i]][["software"]] == "Generic") {
+      output_list[[i]] <- generate_summary_Report(input_df = input_list[[i]][["data"]][["Generic"]], analysis_name = input_list[[i]][["filename"]], software = "Generic", CV_RT_th_hold = CV_RT_th_hold, CV_LFQ_Pep_th_hold = CV_LFQ_Pep_th_hold,  CV_LFQ_PG_th_hold =  CV_LFQ_PG_th_hold)
+      names(output_list)[i] <- input_list[[i]][["filename"]]
+      next
     }
   }
 

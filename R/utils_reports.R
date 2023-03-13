@@ -5,7 +5,7 @@ generate_DC_Report <- function(input_df,
                                input_PD_protein,
                                input_PD_proteingroup,
                                analysis_name = "analysis_name",
-                               software = c("MaxQuant", "DIA-NN", "Spectronaut", "PD"),
+                               software = c("MaxQuant", "DIA-NN", "Spectronaut", "PD", "Generic"),
                                metric = c("absolute", "percentage")) {
   #handle global vars
   . <- NULL
@@ -32,7 +32,7 @@ generate_DC_Report <- function(input_df,
       return(DC_Report)
     }
 
-  } else if (software == "DIA-NN") {
+  } else if (software == "DIA-NN" | software == "Generic") {
 
     DC_Report <- make_frame_DC(input_df = input_df)
 
@@ -109,7 +109,7 @@ generate_ID_Report <- function(input_df,
                                input_PD_protein,
                                input_PD_proteingroup,
                                analysis_name = "analysis_name",
-                               software = c("MaxQuant", "DIA-NN", "Spectronaut", "PD")) {
+                               software = c("MaxQuant", "DIA-NN", "Spectronaut", "PD", "Generic")) {
 
   #handle global vars
   . <- NULL
@@ -136,7 +136,7 @@ generate_ID_Report <- function(input_df,
     ID_Report <- add_analysis_col(input_df = ID_Report, analysis_name = analysis_name)
     return(ID_Report)
 
-  } else if (software == "DIA-NN") {
+  } else if (software == "DIA-NN" | software == "Generic") {
 
     ID_Report <- dplyr::left_join(
       generate_level_count(input_df, "ProteinGroup.IDs"),
@@ -197,13 +197,13 @@ generate_ID_Report <- function(input_df,
 
 generate_MC_Report <- function(input_df,
                                analysis_name = "analysis_name",
-                               software = c("MaxQuant", "DIA-NN", "Spectronaut", "PD"),
+                               software = c("MaxQuant", "DIA-NN", "Spectronaut", "PD", "Generic"),
                                metric = c("absolute", "percentage")) {
 
   #handle global vars
   . <- NULL
 
-  if (software == "MaxQuant" | software == "PD" | software == "Spectronaut") {
+  if (software == "MaxQuant" | software == "PD" | software == "Spectronaut" | software == "Generic") {
     value <- "present"
   } else if (software == "DIA-NN") {
     value <- "generate"
@@ -337,6 +337,17 @@ generate_summary_Report <- function(input_df, #Precursor level
     CV_LFQ_Pep <- input_df  #if no Peptide_LFQ_mpwR detect in get_CV_IDs --> dataframe with NA generated
     MC_Report_abs <- generate_MC_Report(input_df = input_PD_peptide, software = software, analysis_name = analysis_name, metric = "absolute")
     MC_Report_perc <- generate_MC_Report(input_df = input_PD_peptide, software = software, analysis_name = analysis_name, metric = "percentage")
+
+  } else if (software == "Generic") {
+
+    ID_Report <- generate_ID_Report(input_df = input_df, analysis_name = analysis_name, software = software)
+    DC_Report_abs <- generate_DC_Report(input_df = input_df, analysis_name = analysis_name, software = software, metric = "absolute")
+    DC_Report_perc <- generate_DC_Report(input_df = input_df, analysis_name = analysis_name, software = software, metric = "percentage")
+    CV_RT <- calculate_CV(input_df = input_df, cv_col = "Retention.time", analysis_name = analysis_name)
+    CV_LFQ_PG <- calculate_CV(input_df = input_df, cv_col = "ProteinGroup_LFQ", analysis_name = analysis_name)
+    CV_LFQ_Pep <- calculate_CV(input_df = input_df, cv_col = "Peptide_LFQ", analysis_name = analysis_name)
+    MC_Report_abs <- generate_MC_Report(input_df = input_df, software = software, analysis_name = analysis_name, metric = "absolute")
+    MC_Report_perc <- generate_MC_Report(input_df = input_df, software = software, analysis_name = analysis_name, metric = "percentage")
 
   }
 

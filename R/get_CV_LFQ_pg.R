@@ -95,6 +95,16 @@ get_CV_LFQ_pg <- function(input_list) {
       message("For PD no quantitative LFQ data on proteingroup-level.")
       output_list[i] <- NA
       names(output_list)[i] <- NA
+   } else if (input_list[[i]][["software"]] == "Generic") {
+     #check cols
+     if (sum(colnames(input_list[[i]][["data"]][["Generic"]]) %in% cols) != length(cols)) {
+       stop(paste0("Not all required columns - wrong input_list? Check position ", i, " in input_list."))
+     }
+     #==
+
+     output_list[[i]] <- calculate_CV(input_df = input_list[[i]][["data"]][["Generic"]], analysis_name = input_list[[i]][["filename"]], cv_col = "ProteinGroup_LFQ")
+     names(output_list)[i] <- input_list[[i]][["filename"]]
+     next
    }
  }
 

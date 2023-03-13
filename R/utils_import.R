@@ -17,7 +17,7 @@ is.integer64 <- function(x) {
 # Default filtering- MaxQuant: no potential contaminants and no reverse sequences; DIA-NN: none; Spectronaut: EG.Identified only TRUE; PD: Only High Confidence identifications
 
 prepare_input <- function(input_df,
-                          software = c("MaxQuant", "DIA-NN", "Spectronaut", "PD"),
+                          software = c("MaxQuant", "DIA-NN", "Spectronaut", "PD", "Generic"),
                           MaxQuant_addon = c("evidence", "peptide", "proteingroup"),
                           PD_addon = c("psm", "peptide", "protein", "proteingroup")) {
 
@@ -25,13 +25,14 @@ prepare_input <- function(input_df,
   . <- NULL
 
   #**dependencies
-  if (software != "MaxQuant" & software != "DIA-NN" & software != "Spectronaut" & software != "PD") {
+  if (software != "MaxQuant" & software != "DIA-NN" & software != "Spectronaut" & software != "PD" & software != "Generic") {
     stop("Did you spell the software input wrong? Choose between: MaxQuant, DIA-NN, Spectronaut, PD")
   }
   ##
 
   #****************#
   #*Add all columns for identifying file-software match and columns for downstream analysis:
+  cols_generic <- c("Run_mpwR", "ProteinGroup.IDs_mpwR", "Protein.IDs_mpwR", "Peptide.IDs_mpwR", "Precursor.IDs_mpwR", "Stripped.Sequence_mpwR", "Precursor.Charge_mpwR", "Missed.Cleavage_mpwR", "Retention.time_mpwR", "ProteinGroup_LFQ_mpwR", "Peptide_LFQ_mpwR")
 
   cols_MQ_ev <- c("Raw file", "Proteins", "Modified sequence", "Sequence", "Missed cleavages", "Charge", "Retention time", "Potential contaminant", "Reverse")
   cols_MQ_pep <- c("Sequence", "Missed cleavages", "Last amino acid", "Amino acid after", "Potential contaminant", "Reverse") #"Last amino acid" and "amino acid after" to clearly identify data as peptide.txt - currently not used for downstream analysis #requires intensity columns for tidying #requires LFQ intensity for CV LFQ calc
@@ -318,6 +319,19 @@ prepare_input <- function(input_df,
       output_df <- output_df %>%
         filter(.data$Contaminant == FALSE)
     }
+
+  } else if (software == "Generic") {
+
+    #Column check
+    if (sum(cols_generic %in% colnames(input_df)) != length(cols_generic)) {
+      message <- paste("For Generic input - the following column need to be present: ", cols_generic, "\n")
+      message(message)
+      stop("Not all required columns present in submitted data.")
+    }
+    #**
+
+    output_df <- input_df %>%
+      dplyr::mutate_if(is.integer64, as.double)
 
   }
   return(output_df)

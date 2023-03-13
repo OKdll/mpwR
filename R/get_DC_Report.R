@@ -114,6 +114,15 @@ if (metric[1] == "percentage") {
          output_list[[i]] <- generate_DC_Report(input_df = input_list[[i]][["data"]][["psm"]], input_PD_protein = input_list[[i]][["data"]][["prot"]], input_PD_proteingroup = input_list[[i]][["data"]][["pg"]], analysis_name = input_list[[i]][["filename"]], software = "PD", metric = "percentage")
          names(output_list)[i] <- input_list[[i]][["filename"]]
          next
+      } else if (input_list[[i]][["software"]] == "Generic") {
+        #check cols
+        if (sum(colnames(input_list[[i]][["data"]][["Generic"]]) %in% cols) != length(cols)) {
+          stop(paste0("Not all required columns - wrong input_list? Check position ", i, " in input_list."))
+        }
+        #==
+        output_list[[i]] <- generate_DC_Report(input_df = input_list[[i]][["data"]][["Generic"]], analysis_name = input_list[[i]][["filename"]], software = "Generic", metric = "percentage")
+        names(output_list)[i] <- input_list[[i]][["filename"]]
+        next
       }
    }
 
@@ -156,6 +165,15 @@ if (metric[1] == "percentage") {
          output_list[[i]] <- generate_DC_Report(input_df = input_list[[i]][["data"]][["psm"]], input_PD_protein = input_list[[i]][["data"]][["prot"]], input_PD_proteingroup = input_list[[i]][["data"]][["pg"]], analysis_name = input_list[[i]][["filename"]], software = "PD", metric = "absolute")
          names(output_list)[i] <- input_list[[i]][["filename"]]
          next
+      } else if (input_list[[i]][["software"]] == "Generic") {
+        #check cols
+        if (sum(colnames(input_list[[i]][["data"]][["Generic"]]) %in% cols) != length(cols)) {
+          stop(paste0("Not all required columns - wrong input_list? Check position ", i, " in input_list."))
+        }
+        #==
+        output_list[[i]] <- generate_DC_Report(input_df = input_list[[i]][["data"]][["Generic"]], analysis_name = input_list[[i]][["filename"]], software = "Generic", metric = "absolute")
+        names(output_list)[i] <- input_list[[i]][["filename"]]
+        next
       }
    }
 

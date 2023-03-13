@@ -138,6 +138,25 @@ create_example <- function() {
           `Found in Sample R02` = rep("High", times = 5)
         )
       )
+    ),
+    Generic = list(
+      filename = "Generic",
+      software = "Generic",
+      data = list(
+        "Generic" = tibble::tibble(
+          Run_mpwR = rep(c("R01", "R02"), each = 5),
+          ProteinGroup.IDs_mpwR = sample_replicates(c("P02768", "A0A0J9YY99", "A0A0B4J1X5", "Q14624", "Q14624", "Q02985", "P02671")),
+          Protein.IDs_mpwR = sample_replicates(c("P02768", "A0A0J9YY99", "A0A0B4J1X5", "Q14624", "Q14624", "Q02985", "P02671")),
+          Peptide.IDs_mpwR = sample_replicates(c("AAAATGTIFTFR", "AAAAVNFFNIDPAEPELRPHPLGIPTN", "AAC(UniMod:4)LLPK", "AAC(UniMod:4)LLPK", "AADDTWEPFASGK", "ADGESC(UniMod:4)SASM(UniMod:35)MYQEGK")),
+          Precursor.IDs_mpwR = sample_replicates(c("AAAATGTIFTFR2", "AAAAVNFFNIDPAEPELRPHPLGIPTN3", "AAC(UniMod:4)LLPK1", "AAC(UniMod:4)LLPK2", "AADDTWEPFASGK1", "ADGESC(UniMod:4)SASM(UniMod:35)MYQEGK2")),
+          Stripped.Sequence_mpwR = sample_replicates(c("AAAATGTIFTFR", "AAAAVNFFNIDPAEPELRPHPLGIPTN", "AACLLPK", "AACLLPK", "AADDTWEPFASGK", "ADGESCSASMMYQEGK")),
+          Precursor.Charge_mpwR = sample_replicates(c(2, 2, 3, 2, 2, 3, 3)),
+          Missed.Cleavage_mpwR = sample_replicates(c(0, 0, 2, 1, 2, 1, 3)),
+          Retention.time_mpwR = sample_replicates(c(44, 34, 43, 38, 37, 42, 45)),
+          ProteinGroup_LFQ_mpwR = sample_replicates(c(5, 5, 7, 10, 12, 14, 12)),
+          Peptide_LFQ_mpwR = sample_replicates(c(5, 5, 7, 10, 12, 14, 12))
+        )
+      )
     )
   )
 
@@ -159,6 +178,9 @@ create_example <- function() {
      ordered_files[[i]][["data"]][["pep"]] <- prepare_input(ordered_files[[i]][["data"]][["pep"]], software = "PD", PD_addon = "peptide")
      ordered_files[[i]][["data"]][["prot"]] <- prepare_input(ordered_files[[i]][["data"]][["prot"]], software = "PD", PD_addon = "protein")
      ordered_files[[i]][["data"]][["pg"]] <- prepare_input(ordered_files[[i]][["data"]][["pg"]], software = "PD", PD_addon = "proteingroup")
+     next
+   } else if (ordered_files[[i]][["software"]] == "Generic") {
+     ordered_files[[i]][["data"]][["Generic"]] <- prepare_input(ordered_files[[i]][["data"]][["Generic"]], software = "Generic")
      next
    }
  }

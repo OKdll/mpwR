@@ -150,6 +150,21 @@ get_Upset_list <- function(input_list,
         names(output_list)[i] <- input_list[[i]][["filename"]]
         next
       }
+    } else if (input_list[[i]][["software"]] == "Generic") {
+      #check cols
+      if (sum(colnames(input_list[[i]][["data"]][["Generic"]]) %in% cols) != length(cols)) {
+        stop(paste0("Not all required columns - wrong input_list? Check position ", i, " in input_list."))
+      }
+      #==
+
+      output_list[[i]] <- prepare_Upset(input_df = input_list[[i]][["data"]][["Generic"]], software = "Generic", level = level[1], percentage_runs = percentage_runs, flowTraceR = FALSE, remove_traceR_unknownMods = FALSE)
+      names(output_list)[i] <- input_list[[i]][["filename"]]
+
+      if (flowTraceR == TRUE) {
+        message(paste0("flowTraceR not available for generic input. No conversion applied for position ", i, " in input_list."))
+      }
+
+      next
     }
   }
 

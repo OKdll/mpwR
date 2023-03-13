@@ -97,6 +97,15 @@ if (metric[1] == "percentage") {
          output_list[[i]] <-  generate_MC_Report(input_df = input_list[[i]][["data"]][["pep"]], analysis_name = input_list[[i]][["filename"]], software = input_list[[i]][["software"]], metric = "percentage")
          names(output_list)[i] <- input_list[[i]][["filename"]]
          next
+      } else if (input_list[[i]][["software"]] == "Generic") {
+        #check cols
+        if (sum(colnames(input_list[[i]][["data"]][[1]]) %in% cols) != length(cols)) {
+          stop(paste0("Not all required columns - wrong input_list? Check position ", i, " in input_list."))
+        }
+        #==
+        output_list[[i]] <- generate_MC_Report(input_df = input_list[[i]][["data"]][[1]], analysis_name = input_list[[i]][["filename"]], software = input_list[[i]][["software"]], metric = "percentage")
+        names(output_list)[i] <- input_list[[i]][["filename"]]
+        next
       }
    }
 
@@ -131,6 +140,15 @@ if (metric[1] == "percentage") {
          output_list[[i]] <- generate_MC_Report(input_df = input_list[[i]][["data"]][["pep"]], analysis_name = input_list[[i]][["filename"]], software = input_list[[i]][["software"]], metric = "absolute")
          names(output_list)[i] <- input_list[[i]][["filename"]]
          next
+      } else if (input_list[[i]][["software"]] == "Generic") {
+        #check cols
+        if (sum(colnames(input_list[[i]][["data"]][[1]]) %in% cols) != length(cols)) {
+          stop(paste0("Not all required columns - wrong input_list? Check position ", i, " in input_list."))
+        }
+        #==
+        output_list[[i]] <- generate_MC_Report(input_df = input_list[[i]][["data"]][[1]], analysis_name = input_list[[i]][["filename"]], software = input_list[[i]][["software"]], metric = "absolute")
+        names(output_list)[i] <- input_list[[i]][["filename"]]
+        next
       }
    }
 

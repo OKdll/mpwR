@@ -55,7 +55,7 @@ get_CV_LFQ_pep <- function(input_list) {
    cols_MQ_pep <- c("Stripped.Sequence_mpwR")
    cols_MQ_pepLFQ <- c("LFQ intensity")
 
-   cols_spec <- c("Run_mpwR", "Peptide_LFQ_mpwR", "Stripped.Sequence_mpwR")
+   cols <- c("Run_mpwR", "Peptide_LFQ_mpwR", "Stripped.Sequence_mpwR")
 
  #handle global vars
  . <- NULL
@@ -65,7 +65,7 @@ get_CV_LFQ_pep <- function(input_list) {
  for (i in seq_len(length(input_list))) {
    if (input_list[[i]][["software"]] == "Spectronaut") {
       #check cols
-      if (sum(colnames(input_list[[i]][["data"]][["Spectronaut"]]) %in% cols_spec) != length(cols_spec)) {
+      if (sum(colnames(input_list[[i]][["data"]][["Spectronaut"]]) %in% cols) != length(cols)) {
          stop(paste0("Not all required columns - wrong input_list? Check position ", i, " in input_list."))
       }
       #==
@@ -92,6 +92,16 @@ get_CV_LFQ_pep <- function(input_list) {
       }
       output_list[i] <- NA
       names(output_list)[i] <- NA
+   } else if (input_list[[i]][["software"]] == "Generic") {
+     #check cols
+     if (sum(colnames(input_list[[i]][["data"]][["Generic"]]) %in% cols) != length(cols)) {
+       stop(paste0("Not all required columns - wrong input_list? Check position ", i, " in input_list."))
+     }
+     #==
+
+     output_list[[i]] <- calculate_CV(input_df = input_list[[i]][["data"]][["Generic"]], analysis_name = input_list[[i]][["filename"]], cv_col = "Peptide_LFQ")
+     names(output_list)[i] <- input_list[[i]][["filename"]]
+     next
    }
  }
 

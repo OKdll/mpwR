@@ -104,6 +104,15 @@ get_ID_Report <- function(input_list) {
      output_list[[i]] <- generate_ID_Report(input_df = input_list[[i]][["data"]][["psm"]], input_PD_protein = input_list[[i]][["data"]][["prot"]], input_PD_proteingroup = input_list[[i]][["data"]][["pg"]], analysis_name = input_list[[i]][["filename"]], software = "PD")
      names(output_list)[i] <- input_list[[i]][["filename"]]
      next
+   } else if (input_list[[i]][["software"]] == "Generic") {
+     #check cols
+     if (sum(colnames(input_list[[i]][["data"]][["Generic"]]) %in% cols) != length(cols)) {
+       stop(paste0("Not all required columns - wrong input_list? Check position ", i, " in input_list."))
+     }
+     #==
+     output_list[[i]] <- generate_ID_Report(input_df = input_list[[i]][["data"]][["Generic"]], analysis_name = input_list[[i]][["filename"]], software = "Generic")
+     names(output_list)[i] <- input_list[[i]][["filename"]]
+     next
    }
  }
 

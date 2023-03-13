@@ -26,6 +26,7 @@ prepare_mpwR <- function(path) {
 
   #**Here software columns to ID correct software**
   software <- list(
+    Generic = c("Run_mpwR", "ProteinGroup.IDs_mpwR", "Peptide.IDs_mpwR", "Precursor.IDs_mpwR", "Stripped.Sequence_mpwR", "Precursor.Charge_mpwR", "Missed.Cleavage_mpwR", "Retention.time_mpwR", "ProteinGroup_LFQ_mpwR", "Peptide_LFQ_mpwR"),
     MaxQuant_ev = c("Protein group IDs", "Peptide ID"),
     MaxQuant_pep = c("Protein group IDs", "Evidence IDs"),
     MaxQuant_pg = c("Peptide IDs", "Evidence IDs"),
@@ -57,12 +58,12 @@ prepare_mpwR <- function(path) {
   #dependency - appendix ===
   sum_appendix <- 0
   for (i in seq_len(length(appendix))) {
-    add <- sum(stringr::str_detect(string = file_names, pattern = appendix[i]))
+    add <- sum(stringr::str_detect(string = file_names, pattern = paste0(appendix[i], "$")))
     sum_appendix <- sum_appendix + add
   }
 
   if (sum_appendix != length(file_names)) {
-     stop("Unknown file appendix detected! Please use: _evidence, _peptides, _proteinGroups, _PSMs, _Proteins, _PeptideGroups, _ProteinGroups, _Report ")
+     stop("Unknown file appendix detected! Please use: _evidence, _peptides, _proteinGroups, _PSMs, _Proteins, _PeptideGroups, _ProteinGroups, _Report")
     }
   #===
 
@@ -138,6 +139,11 @@ prepare_mpwR <- function(path) {
       stop_name <- overview[i, "filename", drop = TRUE]
       stop(paste0("Wrong number of analyses detected for ", stop_name, "! PD requires 4 input files. Remember: Use unique name for each analysis."))
       }
+    } else if (overview[i, "software", drop = TRUE] == "Generic") {
+      if (overview[i, "count", drop = TRUE] != 1) {
+        stop_name <- overview[i, "filename", drop = TRUE]
+        stop(paste0("Wrong number of analyses detected for ", stop_name, "! Generic input requires 1 input file. Remember: Use unique name for each analysis."))
+      }
     }
   }
   #===
@@ -154,7 +160,7 @@ prepare_mpwR <- function(path) {
     )
 
     for (x in seq_len(length(files_categorized))) {
-#**** DIA-NN/ Spectronaut
+#**** DIA-NN/ Spectronaut / Generic
      if (overview[i, "count", drop = TRUE] == 1) {
 
        if (overview[i, "filename", drop = TRUE] == files_categorized[[x]][["filename"]] & overview[i, "software", drop = TRUE] == files_categorized[[x]][["software"]]) {
@@ -234,6 +240,9 @@ prepare_mpwR <- function(path) {
       ordered_files[[i]][["data"]][["pep"]] <- prepare_input(ordered_files[[i]][["data"]][["pep"]], software = "PD", PD_addon = "peptide")
       ordered_files[[i]][["data"]][["prot"]] <- prepare_input(ordered_files[[i]][["data"]][["prot"]], software = "PD", PD_addon = "protein")
       ordered_files[[i]][["data"]][["pg"]] <- prepare_input(ordered_files[[i]][["data"]][["pg"]], software = "PD", PD_addon = "proteingroup")
+      next
+    } else if (ordered_files[[i]][["software"]] == "Generic") {
+      ordered_files[[i]][["data"]][["Generic"]] <- prepare_input(ordered_files[[i]][["data"]][["Generic"]], software = "Generic")
       next
     }
   }

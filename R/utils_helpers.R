@@ -450,7 +450,7 @@ prepare_Upset <- function(input_df,
                           percentage_runs = 100,
                           flowTraceR = FALSE,
                           remove_traceR_unknownMods = FALSE, #relevant for precursor and modified peptides
-                          software = c("MaxQuant", "DIA-NN", "Spectronaut", "PD")) { #for flowTraceR
+                          software = c("MaxQuant", "DIA-NN", "Spectronaut", "PD", "Generic")) { #for flowTraceR
 
   #handle global vars
   . <- NULL
