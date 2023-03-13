@@ -1,6 +1,6 @@
 ## Submission 
 
-New Submission. mpwR v0.1.2
+New Submission. mpwR v0.1.3
 
 ## Test environments
 
@@ -12,9 +12,21 @@ New Submission. mpwR v0.1.2
 
 ## R CMD check results
 
-0 errors ✓ | 0 warnings ✓ | 0 note
+0 errors ✓ | 0 warnings ✓ | 1 note
+
+Note:
+
+* checking installed package size ... NOTE
+  installed size is 35.5Mb
+  sub-directories of 1Mb or more:
+    doc  35.1Mb
+    
+Comment:
+
+* new vignettes are added, which include a lot of pictures, to showcase useful examples
 
 
-## Archived CRAN package
+## Previous CRAN versions
 
-mpwR v0.1.0
+* mpwR v0.1.2
+* mpwR v0.1.0
