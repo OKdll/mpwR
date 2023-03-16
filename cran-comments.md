@@ -12,19 +12,7 @@ New Submission. mpwR v0.1.3
 
 ## R CMD check results
 
-0 errors ✓ | 0 warnings ✓ | 1 note
-
-Note:
-
-* checking installed package size ... NOTE
-  installed size is 35.5Mb
-  sub-directories of 1Mb or more:
-    doc  35.1Mb
-    
-Comment:
-
-* new vignettes are added, which include a lot of pictures, to showcase useful examples
-
+0 errors ✓ | 0 warnings ✓ | 0 note
 
 ## Previous CRAN versions
 
