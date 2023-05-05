@@ -1,6 +1,6 @@
 ## Submission 
 
-New Submission. mpwR v0.1.3
+New Submission. mpwR v0.1.4
 
 ## Test environments
 
@@ -12,9 +12,10 @@ New Submission. mpwR v0.1.3
 
 ## R CMD check results
 
-0 errors ✓ | 0 warnings ✓ | 0 note
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
 ## Previous CRAN versions
 
+* mpwR v0.1.3
 * mpwR v0.1.2
 * mpwR v0.1.0
