@@ -70,6 +70,9 @@
     <loc>/reference/index.html</loc>
   </url>
   <url>
+    <loc>/reference/load_experimental_design.html</loc>
+  </url>
+  <url>
     <loc>/reference/plot_CV_density.html</loc>
   </url>
   <url>
@@ -98,6 +101,9 @@
   </url>
   <url>
     <loc>/reference/prepare_mpwR.html</loc>
+  </url>
+  <url>
+    <loc>/reference/write_experimental_design.html</loc>
   </url>
   <url>
     <loc>/reference/write_generic_template.html</loc>

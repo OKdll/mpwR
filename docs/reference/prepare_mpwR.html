@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">mpwR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,7 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>path</dt>
-<dd><p>Path to folder where the input data is stored - only input data. No subfolders or other files. Analysis name as prefix + for MaxQuant: _evidence, _peptides, _proteinGroups; for PD - R-friendly headers enabled: _PSMs, _Proteins, _PeptideGroups, _ProteinGroups; for DIA-NN and Spectronaut: _Report</p></dd>
+<dd><p>Path to folder where the input data is stored - only input data. No subfolders or other files. Analysis name as prefix + for MaxQuant: _evidence, _peptides, _proteinGroups; for PD - R-friendly headers enabled: _PSMs, _Proteins, _PeptideGroups, _ProteinGroups; for DIA-NN, Spectronaut and Generic: _Report</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -73,7 +73,7 @@
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Function for easily importing software outputs and preparing for downstream analysis with mpwR. As default for MaxQuant "Reverse", "Potential contaminants" and "Only identified by site" are filtered out. As default for PD only "High" confidence identifications are included and for Found in Sample column(s) also only "High" identifications. Contaminants are filtered out. As default for Spectronaut only EG.Identified equals TRUE are included.</p>
+    <p>Function for easily importing the default software outputs and preparing for downstream analysis with mpwR within one folder. As default for MaxQuant "Reverse", "Potential contaminants" and "Only identified by site" are filtered out. As default for PD only "High" confidence identifications are included and for Found in Sample column(s) also only "High" identifications. Contaminants are filtered out. As default for Spectronaut only EG.Identified equals TRUE are included.</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>

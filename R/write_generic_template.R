@@ -1,13 +1,26 @@
 #' Create generic template
 #'
-#' Generation of a template.csv file for generic input data.
+#' Generation of a template.csv file for generic input data. The template is provided in long-format.
 #'
-#' The generated template.csv file can be used to create a software-independent input file for mpwR. Example entries are provided. The template file - filename_Report.csv - is generated. The appendix "_Report" is required for importing with mpwR.
+#' The generated template.csv file can be used to create a software-independent input file for mpwR. Example entries are provided. The template file - filename_Report.csv - is generated. The appendix "_Report" is required for importing with mpwR. Note that the template is in long-format, so each ProteinGroup.ID has possible multiple entries depending on the number of Precursor.IDs.
 #'
 #' @param path_filename Path to folder where template is generated and user-defined filename
 #' @author Oliver Kardell
 #'
-#' @return This function returns a csv-file.
+#' @return This function returns a csv-file with the following columns:
+#' \itemize{
+#'  \item Run_mpwR - name of file(s).
+#'  \item ProteinGroup.IDs_mpwR - ProteinGroup with identifier(s) of protein(s) contained in the protein group.
+#'  \item Protein.IDs_mpwR - Protein identifier(s).
+#'  \item Peptide.IDs_mpwR - Sequence representation plus possible post-translational modifications.
+#'  \item Precursor.IDs_mpwR - Sequence representation plus possible post-translational modifications including charge state.
+#'  \item Stripped.Sequence_mpwR - 	The amino acid sequence of the identified peptide without modifications.
+#'  \item Precursor.Charge_mpwR - Charge state of the precursor.
+#'  \item Missed.Cleavage_mpwR - Number of missed enzymatic cleavages.
+#'  \item Retention.time_mpwR -  Retention time in minutes in the elution profile of the precursor ion.
+#'  \item ProteinGroup_LFQ_mpwR - LFQ intensity column on proteingroup-level
+#'  \item Peptide_LFQ_mpwR - LFQ intensity column on petide-level
+#' }
 #'
 #' @export
 #'

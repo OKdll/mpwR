@@ -102,6 +102,10 @@ prepare_input <- function(input_df,
         message <- paste("For MaxQuant peptides.txt - the following column need to be present: ", cols_MQ_pep, "\n")
         stop("Not all required columns present in submitted data.")
       }
+
+      if (sum(stringr::str_detect(colnames(input_df), "Intensity ")) < 1) {
+        stop("Not all required columns present in submitted data. No file specific intensity column(s) detected in MaxQuant peptides.txt.")
+      }
       #**
 
       #switch from logical to character, if empty column
@@ -117,7 +121,6 @@ prepare_input <- function(input_df,
             Reverse = ""
           )
         )
-      #
 
       output_df <- input_df %>%
         dplyr::filter(.data$`Potential contaminant` != "+", .data$Reverse != "+") %>%
@@ -133,6 +136,10 @@ prepare_input <- function(input_df,
         message <- paste("For MaxQuant proteinGroups.txt input - the following column need to be present: ", cols_MQ_pg, "\n")
         message(message)
         stop("Not all required columns present in submitted data.")
+      }
+
+      if (sum(stringr::str_detect(colnames(input_df), "Intensity ")) < 1) {
+        stop("Not all required columns present in submitted data. No file specific intensity column(s) detected in MaxQuant proteinGroups.txt.")
       }
       #**
 

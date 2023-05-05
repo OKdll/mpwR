@@ -7,7 +7,7 @@
 prepare_mpwR(path)
 }
 \arguments{
-\item{path}{Path to folder where the input data is stored - only input data. No subfolders or other files. Analysis name as prefix + for MaxQuant: _evidence, _peptides, _proteinGroups; for PD - R-friendly headers enabled: _PSMs, _Proteins, _PeptideGroups, _ProteinGroups; for DIA-NN and Spectronaut: _Report}
+\item{path}{Path to folder where the input data is stored - only input data. No subfolders or other files. Analysis name as prefix + for MaxQuant: _evidence, _peptides, _proteinGroups; for PD - R-friendly headers enabled: _PSMs, _Proteins, _PeptideGroups, _ProteinGroups; for DIA-NN, Spectronaut and Generic: _Report}
 }
 \value{
 A list - each list entry has filename and software info as well as stored data.
@@ -16,7 +16,7 @@ A list - each list entry has filename and software info as well as stored data.
 Input data will be imported, renamed and default filtering will be applied
 }
 \details{
-Function for easily importing software outputs and preparing for downstream analysis with mpwR. As default for MaxQuant "Reverse", "Potential contaminants" and "Only identified by site" are filtered out. As default for PD only "High" confidence identifications are included and for Found in Sample column(s) also only "High" identifications. Contaminants are filtered out. As default for Spectronaut only EG.Identified equals TRUE are included.
+Function for easily importing the default software outputs and preparing for downstream analysis with mpwR within one folder. As default for MaxQuant "Reverse", "Potential contaminants" and "Only identified by site" are filtered out. As default for PD only "High" confidence identifications are included and for Found in Sample column(s) also only "High" identifications. Contaminants are filtered out. As default for Spectronaut only EG.Identified equals TRUE are included.
 }
 \examples{
 \dontrun{

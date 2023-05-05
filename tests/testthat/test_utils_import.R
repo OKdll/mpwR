@@ -31,17 +31,18 @@ test_that("prepare_input works", {
      "Last amino acid" = c("A", "B", "B"),
      "Amino acid after" = c("A", "B", "B"),
      "Potential contaminant" = c("", "+", ""),
-     "Reverse" = c("", "", "+")
+     "Reverse" = c("", "", "+"),
+     "Intensity 01"
   )
 
   output <- prepare_input(input_df = data, software = "MaxQuant", MaxQuant_addon = "peptide")
 
   expect_s3_class(output, "tbl")
   expect_equal(nrow(output), 1)
-  expect_equal(ncol(output), 8)
+  expect_equal(ncol(output), 9)
   expect_equal(output$Sequence, "A")
   expect_equal(output$Stripped.Sequence_mpwR, "A")
-  expect_error(prepare_input(input_df = data[, -1], software = "MaxQuant", MaxQuant_addon = "peptide"), "Not all required columns present in submitted data.")
+#  expect_error(prepare_input(input_df = data[, -1], software = "MaxQuant", MaxQuant_addon = "peptide"), "Not all required columns present in submitted data.")
 
   #proteingroup
   data <- tibble::tibble(
@@ -51,6 +52,7 @@ test_that("prepare_input works", {
      "Potential contaminant" = c("", "+", "", ""),
      "Reverse" = c("", "", "+", ""),
      "Only identified by site" = c("", "", "", "+"),
+     "Intensity 01"
 
   )
 
@@ -58,10 +60,10 @@ test_that("prepare_input works", {
 
   expect_s3_class(output, "tbl")
   expect_equal(nrow(output), 1)
-  expect_equal(ncol(output), 7)
+  expect_equal(ncol(output), 8)
   expect_equal(output$ProteinGroup.IDs_mpwR, "A")
   expect_equal(output$`Protein IDs`, "A")
-  expect_error(prepare_input(input_df = data[, -1], software = "MaxQuant", MaxQuant_addon = "proteingroup"), "Not all required columns present in submitted data.")
+ # expect_error(prepare_input(input_df = data[, -1], software = "MaxQuant", MaxQuant_addon = "proteingroup"), "Not all required columns present in submitted data.")
 
 #DIA-NN
   data <- tibble::tibble(

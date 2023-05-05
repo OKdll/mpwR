@@ -1,3 +1,10 @@
+# mpwR 0.1.4
+
+* Added function load_experimental_design
+* Added function write_experimental_design
+* Added further user-friendly error messaging in prepare_mpwR
+* Added further description in write_generic_template
+
 # mpwR 0.1.3
 
 * Added article "Output Explanations" to package website

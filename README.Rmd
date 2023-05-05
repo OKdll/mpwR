@@ -22,8 +22,8 @@ knitr::opts_chunk$set(
 
 mpwR [ɪmˈpaʊə(r)] offers a systematic approach for comparing proteomic workflows and empowers the researcher to effortlessly access valuable information about identifications, data completeness, quantitative precision, and other performance indicators across an unlimited number of analyses and multiple software tools. It can be used to analyze label-free mass spectrometry-based experiments with data-dependent or data-independent spectral acquisition.
 
-## Applications
-The functions of mpwR provide a great foundation to generate customized reports e.g. with RMarkdown or to build shiny apps/dashboards for downstream data analysis. An example for a shiny dashboard is available [here](https://okdll.shinyapps.io/mpwR/). 
+## Applications - RMarkdown or Shiny
+The functions of mpwR provide a great foundation to generate customized reports e.g. with RMarkdown or to build shiny apps/dashboards for downstream data analysis. An example for a shiny dashboard is also available - you can access the dashboard [here](https://okdll.shinyapps.io/mpwR/). 
 
 ## Installation
 

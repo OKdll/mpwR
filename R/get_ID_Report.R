@@ -54,7 +54,7 @@ get_ID_Report <- function(input_list) {
    #dependency ===
    cols_MQ_ev <- c("Run_mpwR", "Precursor.IDs_mpwR", "Peptide.IDs_mpwR", "Protein.IDs_mpwR")
    cols_MQ_pg <- c("ProteinGroup.IDs_mpwR")
-   cols_MQ_pg_intensity <- c("Intensity")
+   cols_MQ_pg_intensity <- c("Intensity ")
 
    cols_PD_prot <- c("Run_mpwR", "Protein.IDs_mpwR")
    cols_PD_pg <- c("Run_mpwR", "ProteinGroup.IDs_mpwR")
