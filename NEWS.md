@@ -1,3 +1,9 @@
+# mpwR 0.1.5
+
+* Updated prepare_mpwR function - improvements for MaxQuant import: Precursor Intensities with 0 are excluded
+* Updated prepare_mpwR function - improvements for DIA-NN import: Precursor.Quantity with 0 are excluded
+* Updated prepare_mpwR function - improvements for DIA-NN import: new parameter added to filter specific PG.Q.Value and Q.Value; default for both at 1% (0.01)
+
 # mpwR 0.1.4
 
 * Added function load_experimental_design

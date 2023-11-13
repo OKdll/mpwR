@@ -54,7 +54,8 @@ The following files and respective columns are required:
     * Protein group IDs
     * Peptide ID 
     * Potential contaminant 
-    * Reverse 
+    * Reverse
+    * Intensity
 
 * peptides.txt
     * Sequence 
@@ -95,7 +96,9 @@ The following columns are required:
 * Precursor.Charge
 * RT 
 * Precursor.Id
-
+* Precursor.Quantity
+* PG.Q.Value
+* Q.Value
 
 ## Proteome Discoverer
 

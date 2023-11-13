@@ -5,6 +5,9 @@
 #' Function for easily importing the default software outputs and preparing for downstream analysis with mpwR within one folder. As default for MaxQuant "Reverse", "Potential contaminants" and "Only identified by site" are filtered out. As default for PD only "High" confidence identifications are included and for Found in Sample column(s) also only "High" identifications. Contaminants are filtered out. As default for Spectronaut only EG.Identified equals TRUE are included.
 #'
 #' @param path Path to folder where the input data is stored - only input data. No subfolders or other files. Analysis name as prefix + for MaxQuant: _evidence, _peptides, _proteinGroups; for PD - R-friendly headers enabled: _PSMs, _Proteins, _PeptideGroups, _ProteinGroups; for DIA-NN, Spectronaut and Generic: _Report
+#' @param diann_addon_pg_qval Numeric between 0 and 1. Applied only to DIA-NN data: `diann_addon_pg_qval` <= PG.Q.Value.
+#' @param diann_addon_prec_qval Numeric between 0 and 1. Applied only to DIA-NN data: `diann_addon_prec_qval` <= Q.Value.
+#'
 #' @author Oliver Kardell
 #'
 #' @importFrom data.table fread
@@ -22,7 +25,9 @@
 #' prepare_mpwR(path = "DIRECTORY_TO_FILES")
 #' }
 
-prepare_mpwR <- function(path) {
+prepare_mpwR <- function(path,
+                         diann_addon_pg_qval = 0.01,
+                         diann_addon_prec_qval = 0.01) {
 
   #**Here software columns to ID correct software**
   software <- list(
@@ -225,7 +230,9 @@ prepare_mpwR <- function(path) {
   for (i in seq_len(length(ordered_files))) {
 
     if (ordered_files[[i]][["software"]] == "DIA-NN") {
-      ordered_files[[i]][["data"]][["DIA-NN"]] <- prepare_input(ordered_files[[i]][["data"]][["DIA-NN"]], software = "DIA-NN")
+      ordered_files[[i]][["data"]][["DIA-NN"]] <- prepare_input(ordered_files[[i]][["data"]][["DIA-NN"]], software = "DIA-NN",
+                                                                diann_addon_pg_qval = diann_addon_pg_qval,
+                                                                diann_addon_prec_qval = diann_addon_prec_qval)
       next
     } else if (ordered_files[[i]][["software"]] == "Spectronaut") {
       ordered_files[[i]][["data"]][["Spectronaut"]] <- prepare_input(ordered_files[[i]][["data"]][["Spectronaut"]], software = "Spectronaut")

@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">mpwR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,13 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.1.4" id="mpwr-014">mpwR 0.1.4<a class="anchor" aria-label="anchor" href="#mpwr-014"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.1.5" id="mpwr-015">mpwR 0.1.5<a class="anchor" aria-label="anchor" href="#mpwr-015"></a></h2>
+<ul><li>Updated prepare_mpwR function - improvements for MaxQuant import: Precursor Intensities with 0 are excluded</li>
+<li>Updated prepare_mpwR function - improvements for DIA-NN import: Precursor.Quantity with 0 are excluded</li>
+<li>Updated prepare_mpwR function - improvements for DIA-NN import: new parameter added to filter specific PG.Q.Value and Q.Value; default for both at 1% (0.01)</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.1.4" id="mpwr-014">mpwR 0.1.4<a class="anchor" aria-label="anchor" href="#mpwr-014"></a></h2><p class="text-muted">CRAN release: 2023-05-05</p>
 <ul><li>Added function load_experimental_design</li>
 <li>Added function write_experimental_design</li>
 <li>Added further user-friendly error messaging in prepare_mpwR</li>

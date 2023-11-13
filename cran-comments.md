@@ -1,6 +1,6 @@
 ## Submission 
 
-New Submission. mpwR v0.1.4
+New Submission. mpwR v0.1.5
 
 ## Test environments
 
@@ -16,6 +16,7 @@ New Submission. mpwR v0.1.4
 
 ## Previous CRAN versions
 
+* mpwR v0.1.4
 * mpwR v0.1.3
 * mpwR v0.1.2
 * mpwR v0.1.0

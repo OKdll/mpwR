@@ -12,14 +12,15 @@ test_that("prepare_input works", {
       "Charge" = c(2, 3, 3),
       "Retention time" = c(3, 5, 5.2),
       "Potential contaminant" = c("", "+", ""),
-      "Reverse" = c("", "", "+")
+      "Reverse" = c("", "", "+"),
+      "Intensity" = rep(1000, 3)
    )
 
   output <- prepare_input(input_df = data, software = "MaxQuant", MaxQuant_addon = "evidence")
 
   expect_s3_class(output, "tbl")
   expect_equal(nrow(output), 1)
-  expect_equal(ncol(output), 17)
+  expect_equal(ncol(output), 18)
   expect_equal(output$`Modified sequence`, "AMod")
   expect_equal(output$`Raw file`, "R01")
   expect_error(prepare_input(input_df = data[, -1], software = "MaxQuant", MaxQuant_addon = "evidence"), "Not all required columns present in submitted data.")
@@ -75,14 +76,17 @@ test_that("prepare_input works", {
     Modified.Sequence = c("AAAATGTIFTFR2", "AEDTAVYYC(UniMod:4)AK2", "AAC(Dummy_Modification)LLPK2"),
     PG.MaxLFQ = c(5, 5, 7),
     Precursor.Charge = c(2, 2, 2),
-    RT = c(2, 3, 3.6)
+    RT = c(2, 3, 3.6),
+    PG.Q.Value = c(0.009, 0.009, 0.009),
+    Q.Value = c(0.009, 0.009, 0.009),
+    Precursor.Quantity = c(1000, 1000, 1000)
   )
 
   output <- prepare_input(input_df = data, software = "DIA-NN")
 
   expect_s3_class(output, "tbl")
   expect_equal(nrow(output), 3)
-  expect_equal(ncol(output), 18)
+  expect_equal(ncol(output), 21)
   expect_equal(output$ProteinGroup.IDs_mpwR, c("A", "B", "B"))
   expect_equal(output$Protein.Ids, c("A", "B", "B"))
   expect_error(prepare_input(input_df = data[, -1], software = "DIA-NN"), "Not all required columns present in submitted data.")

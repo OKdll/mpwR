@@ -32,7 +32,8 @@ create_example <- function() {
           "Charge" =  sample_replicates(c(2, 2, 3, 2, 2, 3, 3)),
           "Retention time" = sample_replicates(c(44, 34, 43, 38, 37, 42, 45)),
           "Potential contaminant" = rep(c(""), times = 10),
-          "Reverse" = rep(c(""), times = 10)
+          "Reverse" = rep(c(""), times = 10),
+          "Intensity" = rep(1000, times = 10)
         ),
         "pep" = tibble::tibble(
           "Sequence" = sample(c("_AACLLPK_", "_AAFTECCQAADK_", "_AEAQAQYSAAVAK_", "_ALTDMPQMR_", "_ANTVQEATFQMELPK_", "_AQLVDMK_"), 5),
@@ -73,7 +74,10 @@ create_example <- function() {
           Stripped.Sequence = sample_replicates(c("AAAATGTIFTFR", "AAAAVNFFNIDPAEPELRPHPLGIPTN", "AACLLPK", "AACLLPK", "AADDTWEPFASGK", "ADGESCSASMMYQEGK")),
           PG.MaxLFQ = sample_replicates(c(5, 5, 7, 10, 12, 14, 12)),
           Precursor.Charge = sample_replicates(c(2, 2, 3, 2, 2, 3, 3)),
-          RT = sample_replicates(c(21, 22, 25, 27, 27, 28, 20))
+          RT = sample_replicates(c(21, 22, 25, 27, 27, 28, 20)),
+          PG.Q.Value = rep(0.001, 10),
+          Q.Value = rep(0.001, 10),
+          Precursor.Quantity = rep(1000, 10)
         )
       )
     ),

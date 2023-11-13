@@ -4,10 +4,14 @@
 \alias{prepare_mpwR}
 \title{Load and Prepare the input data}
 \usage{
-prepare_mpwR(path)
+prepare_mpwR(path, diann_addon_pg_qval = 0.01, diann_addon_prec_qval = 0.01)
 }
 \arguments{
 \item{path}{Path to folder where the input data is stored - only input data. No subfolders or other files. Analysis name as prefix + for MaxQuant: _evidence, _peptides, _proteinGroups; for PD - R-friendly headers enabled: _PSMs, _Proteins, _PeptideGroups, _ProteinGroups; for DIA-NN, Spectronaut and Generic: _Report}
+
+\item{diann_addon_pg_qval}{Numeric between 0 and 1. Applied only to DIA-NN data: \code{diann_addon_pg_qval} <= PG.Q.Value.}
+
+\item{diann_addon_prec_qval}{Numeric between 0 and 1. Applied only to DIA-NN data: \code{diann_addon_prec_qval} <= Q.Value.}
 }
 \value{
 A list - each list entry has filename and software info as well as stored data.

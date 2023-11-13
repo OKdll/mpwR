@@ -48,9 +48,9 @@ viz_DC_barplot <- function(input_df,
     input_df <- input_df %>%
       dplyr::select("Nr.Missing.Values", any_of(level))
 
-    if (label == "absolute") {
+    if (label[1] == "absolute") {
       name_yaxes <- "Nr. of affected profiles [abs.]\n"
-    } else if (label == "percentage") {
+    } else if (label[1] == "percentage") {
       name_yaxes <- "Nr. of affected profiles [%]\n"
     }
 
@@ -86,7 +86,7 @@ viz_DC_stacked_barplot <- function(input_df,
   } else {
 
     #summarize per Profile
-    input_df <- prepare_stacked_barplot(input_df =  input_df, level = level)
+    input_df <- prepare_stacked_barplot(input_df =  input_df, level = level[1])
 
     #color scheme
     unique_Profile <- length(unique(input_df$Profile))
@@ -106,15 +106,15 @@ viz_DC_stacked_barplot <- function(input_df,
     #xlimit
     xlimit <- input_df %>%
       dplyr::group_by(.data$Analysis) %>%
-      dplyr::summarize(Sum_Level = sum(.data[[!!level]])) %>%
+      dplyr::summarize(Sum_Level = sum(.data[[!!level[1]]])) %>%
       dplyr::ungroup()
 
     #x axes name - appendix
-    if (label == "absolute") {
-      name_xaxes <- paste0(level, " [abs.]")
+    if (label[1] == "absolute") {
+      name_xaxes <- paste0(level[1], " [abs.]")
       xlimit <- max(xlimit[, 2]) + (max(xlimit[, 2]) * 0.1)
-    } else if (label == "percentage") {
-      name_xaxes <- paste0(level, " [%]")
+    } else if (label[1] == "percentage") {
+      name_xaxes <- paste0(level[1], " [%]")
       xlimit <- 101
     }
 

@@ -19,7 +19,9 @@ is.integer64 <- function(x) {
 prepare_input <- function(input_df,
                           software = c("MaxQuant", "DIA-NN", "Spectronaut", "PD", "Generic"),
                           MaxQuant_addon = c("evidence", "peptide", "proteingroup"),
-                          PD_addon = c("psm", "peptide", "protein", "proteingroup")) {
+                          PD_addon = c("psm", "peptide", "protein", "proteingroup"),
+                          diann_addon_pg_qval = 0.01,
+                          diann_addon_prec_qval = 0.01) {
 
   #handle global vars
   . <- NULL
@@ -83,6 +85,7 @@ prepare_input <- function(input_df,
 
       output_df <- input_df %>%
         dplyr::filter(.data$`Potential contaminant` != "+", .data$Reverse != "+") %>%
+        dplyr::filter(.data$Intensity != 0) %>%
         dplyr::mutate("Run_mpwR" = .data$`Raw file`,
                       "Protein.IDs_mpwR" = .data$Proteins,
                       "Peptide.IDs_mpwR" = .data$`Modified sequence`,
@@ -178,6 +181,10 @@ prepare_input <- function(input_df,
     #**
 
     output_df <- input_df %>%
+      dplyr::filter(.data$PG.Q.Value <= diann_addon_pg_qval) %>%
+      dplyr::filter(.data$Q.Value <= diann_addon_prec_qval) %>%
+      dplyr::filter(.data$Precursor.Quantity != 0) %>%
+      dplyr::filter(!is.na(.data$Protein.Group)) %>%
       dplyr::mutate(
         "Run_mpwR" = .data$Run,
         "Stripped.Sequence_mpwR" = .data$Stripped.Sequence,
