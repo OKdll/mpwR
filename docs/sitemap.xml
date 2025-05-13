@@ -1,111 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/articles/Import.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/Output_Explanations.html</loc>
-  </url>
-  <url>
-    <loc>/articles/Requirements.html</loc>
-  </url>
-  <url>
-    <loc>/articles/usecase_RT.html</loc>
-  </url>
-  <url>
-    <loc>/articles/usecase_Software.html</loc>
-  </url>
-  <url>
-    <loc>/articles/Workflow.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/create_example.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_CV_LFQ_pep.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_CV_LFQ_pg.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_CV_RT.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_DC_Report.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_ID_Report.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_MC_Report.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_summary_Report.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_Upset_list.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/load_experimental_design.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_CV_density.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_DC_barplot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_DC_stacked_barplot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_ID_barplot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_ID_boxplot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_MC_barplot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_MC_stacked_barplot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_radarchart.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_Upset.html</loc>
-  </url>
-  <url>
-    <loc>/reference/prepare_mpwR.html</loc>
-  </url>
-  <url>
-    <loc>/reference/write_experimental_design.html</loc>
-  </url>
-  <url>
-    <loc>/reference/write_generic_template.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/articles/Import.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/articles/Output_Explanations.html</loc></url>
+<url><loc>/articles/Requirements.html</loc></url>
+<url><loc>/articles/usecase_Software.html</loc></url>
+<url><loc>/articles/Workflow.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/create_example.html</loc></url>
+<url><loc>/reference/get_CV_LFQ_pep.html</loc></url>
+<url><loc>/reference/get_CV_LFQ_pg.html</loc></url>
+<url><loc>/reference/get_CV_RT.html</loc></url>
+<url><loc>/reference/get_DC_Report.html</loc></url>
+<url><loc>/reference/get_ID_Report.html</loc></url>
+<url><loc>/reference/get_MC_Report.html</loc></url>
+<url><loc>/reference/get_summary_Report.html</loc></url>
+<url><loc>/reference/get_Upset_list.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/load_experimental_design.html</loc></url>
+<url><loc>/reference/plot_CV_density.html</loc></url>
+<url><loc>/reference/plot_DC_barplot.html</loc></url>
+<url><loc>/reference/plot_DC_stacked_barplot.html</loc></url>
+<url><loc>/reference/plot_ID_barplot.html</loc></url>
+<url><loc>/reference/plot_ID_boxplot.html</loc></url>
+<url><loc>/reference/plot_MC_barplot.html</loc></url>
+<url><loc>/reference/plot_MC_stacked_barplot.html</loc></url>
+<url><loc>/reference/plot_radarchart.html</loc></url>
+<url><loc>/reference/plot_Upset.html</loc></url>
+<url><loc>/reference/prepare_mpwR.html</loc></url>
+<url><loc>/reference/write_experimental_design.html</loc></url>
+<url><loc>/reference/write_generic_template.html</loc></url>
 </urlset>
+

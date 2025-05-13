@@ -1,3 +1,6 @@
+# mpwR 0.1.5.1
+* Minor improvements for recent envir developments
+
 # mpwR 0.1.5
 
 * Updated prepare_mpwR function - improvements for MaxQuant import: Precursor Intensities with 0 are excluded
